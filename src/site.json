@@ -1,0 +1,9 @@
+{
+  "_comment": "Site-wide configuration. Leave appStoreUrl / playStoreUrl empty until the listings are live — the buttons then render as 'coming soon' (no dead links).",
+  "name": "Collaro",
+  "url": "https://collaro.app",
+  "defaultLang": "en",
+  "contactEmail": "contact@collaro.app",
+  "appStoreUrl": "",
+  "playStoreUrl": ""
+}

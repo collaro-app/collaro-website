@@ -1,0 +1,75 @@
+<!--page
+{ "strings": "support", "title": "{{support.meta.title}}", "description": "{{support.meta.description}}", "nav": "support" }
+-->
+      <section class="page-hero" aria-labelledby="support-title">
+        <div class="container container--narrow">
+          <p class="eyebrow">{{support.eyebrow}}</p>
+          <h1 class="page-hero__title" id="support-title">{{support.title}}</h1>
+          <p class="page-hero__lead">{{support.lead}}</p>
+        </div>
+      </section>
+
+      <section class="section section--tight" aria-labelledby="contact-title">
+        <div class="container container--narrow">
+          <div class="contact-card">
+            <span class="contact-card__icon">{{icon:mail}}</span>
+            <h2 class="section__title section__title--sm" id="contact-title">{{site.contactEmail}}</h2>
+            <p class="section__subtitle">{{support.responseNote}}</p>
+            <p class="contact-card__email">
+              <a class="btn btn--primary" href="mailto:{{site.contactEmail}}">{{icon:mail}} {{support.emailCta}}</a>
+            </p>
+            <p class="contact-card__languages">{{support.languages}}</p>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-card">
+              <h2 class="info-card__title">{{support.includeTitle}}</h2>
+              <ul class="check-list" role="list">
+                <li>{{icon:check}} <span>{{support.include1}}</span></li>
+                <li>{{icon:check}} <span>{{support.include2}}</span></li>
+                <li>{{icon:check}} <span>{{support.include3}}</span></li>
+              </ul>
+            </div>
+            <div class="info-card">
+              <h2 class="info-card__title">{{support.inAppTitle}}</h2>
+              <p>{{support.inAppText}}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--alt" aria-labelledby="deletion-title">
+        <div class="container container--narrow">
+          <h2 class="section__title section__title--sm" id="deletion-title">{{support.deletionTitle}}</h2>
+          <p>{{support.deletionText}}</p>
+          <p>{{support.deletionLinksIntro}}</p>
+          <ul class="link-list" role="list">
+            <li><a class="link-arrow" href="{{page.href.account-deletion}}">{{support.accountDeletionLink}} {{icon:arrow-right}}</a></li>
+            <li><a class="link-arrow" href="{{page.href.data-deletion}}">{{support.dataDeletionLink}} {{icon:arrow-right}}</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="legal-title">
+        <div class="container container--narrow">
+          <h2 class="section__title section__title--sm" id="legal-title">{{support.legalTitle}}</h2>
+          <p>{{support.legalText}}</p>
+          <ul class="link-list" role="list">
+            <li><a class="link-arrow" href="{{page.href.terms-of-service}}">{{support.termsLink}} {{icon:arrow-right}}</a></li>
+            <li><a class="link-arrow" href="{{page.href.privacy-policy}}">{{support.privacyLink}} {{icon:arrow-right}}</a></li>
+            <li><a class="link-arrow" href="{{page.href.account-deletion}}">{{support.accountDeletionLink}} {{icon:arrow-right}}</a></li>
+            <li><a class="link-arrow" href="{{page.href.data-deletion}}">{{support.dataDeletionLink}} {{icon:arrow-right}}</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section--alt section--tight" aria-labelledby="about-title">
+        <div class="container container--narrow">
+          <h2 class="section__title section__title--sm" id="about-title">{{support.aboutTitle}}</h2>
+          <ul class="plain-list" role="list">
+            <li>{{support.aboutOperator}}</li>
+            <li>{{support.aboutContact}} <a href="mailto:{{site.contactEmail}}">{{site.contactEmail}}</a></li>
+            <li>{{support.aboutPostal}}</li>
+          </ul>
+        </div>
+      </section>

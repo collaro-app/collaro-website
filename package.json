@@ -1,0 +1,15 @@
+{
+  "name": "collaro.app-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Collaro marketing website + public legal pages (collaro.app). Plain HTML/CSS/JS, rendered by a zero-dependency build into docs/ for GitHub Pages.",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --check",
+    "serve": "node scripts/serve.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="{{page.lang}}" dir="{{page.dir}}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{page.fullTitle}}</title>
+    <meta name="description" content="{{page.description}}" />
+{{#if page.robots}}    <meta name="robots" content="{{page.robots}}" />
+{{/if}}    <link rel="canonical" href="{{page.url}}" />
+{{#if page.hasAlternate}}{{#each page.hreflang}}    <link rel="alternate" hreflang="{{this.lang}}" href="{{this.href}}" />
+{{/each}}{{/if}}    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{site.name}}" />
+    <meta property="og:title" content="{{page.fullTitle}}" />
+    <meta property="og:description" content="{{page.description}}" />
+    <meta property="og:url" content="{{page.url}}" />
+    <meta property="og:image" content="{{site.url}}/assets/img/og/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="587" />
+    <meta property="og:image:alt" content="{{chrome.ogImageAlt}}" />
+    <meta property="og:locale" content="{{page.ogLocale}}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#2F6FED" />
+    <link rel="icon" href="assets/img/icons/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="assets/img/icons/favicon-192.png" sizes="192x192" type="image/png" />
+    <link rel="apple-touch-icon" href="assets/img/icons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="assets/css/site.css" />
+    <script>document.documentElement.classList.add("js");</script>
+{{#if page.isHome}}    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobileApplication",
+      "name": "{{site.name}}",
+      "url": "{{site.url}}/",
+      "description": {{page.descriptionJson}},
+      "operatingSystem": "iOS, Android",
+      "applicationCategory": "LifestyleApplication",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "ILS" },
+      "author": { "@type": "Organization", "name": "{{site.name}}", "url": "{{site.url}}/", "email": "{{site.contactEmail}}" }
+    }
+    </script>
+{{/if}}  </head>
+  <body class="page-{{page.kind}}">
+    <a class="skip-link" href="#main">{{chrome.skipToContent}}</a>
+
+    <header class="site-header" id="top">
+      <div class="container site-header__inner">
+        <a class="brand" href="{{page.href.index}}" aria-label="{{chrome.brandHomeLabel}}">
+          <img class="brand__mark" src="assets/img/logo/paw-tile.png" alt="" width="36" height="36" />
+          <span class="brand__name">{{site.name}}</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="{{chrome.menuLabel}}"
+        >
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="{{chrome.primaryNavLabel}}">
+          <ul class="site-nav__list">
+            <li><a href="{{page.href.index}}#owners"{{#if page.nav.owners}} aria-current="page"{{/if}}>{{chrome.nav.owners}}</a></li>
+            <li><a href="{{page.href.index}}#providers"{{#if page.nav.providers}} aria-current="page"{{/if}}>{{chrome.nav.providers}}</a></li>
+            <li><a href="{{page.href.index}}#how-it-works">{{chrome.nav.howItWorks}}</a></li>
+            <li><a href="{{page.href.support}}"{{#if page.nav.support}} aria-current="page"{{/if}}>{{chrome.nav.support}}</a></li>
+{{#if page.hasAlternate}}{{#each page.alternate}}            <li class="site-nav__lang"><a href="{{this.href}}" lang="{{this.lang}}" hreflang="{{this.lang}}">{{this.label}}</a></li>
+{{/each}}{{/if}}
+            <li class="site-nav__cta"><a class="btn btn--primary btn--sm" href="{{page.href.index}}#download">{{chrome.nav.getApp}}</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+{{#if page.isDocument}}
+      <div class="container container--narrow">
+        <article class="document">
+{{content}}
+        </article>
+      </div>
+{{/if}}
+{{#unless page.isDocument}}
+{{content}}
+{{/unless}}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div class="site-footer__brand">
+          <a class="brand" href="{{page.href.index}}" aria-label="{{chrome.brandHomeLabel}}">
+            <img class="brand__mark" src="assets/img/logo/paw-tile.png" alt="" width="36" height="36" />
+            <span class="brand__name">{{site.name}}</span>
+          </a>
+          <p class="site-footer__tagline">{{chrome.footer.tagline}}</p>
+          <p class="site-footer__contact">
+            <a href="mailto:{{site.contactEmail}}">{{site.contactEmail}}</a>
+          </p>
+        </div>
+
+        <nav class="site-footer__col" aria-labelledby="footer-product">
+          <h2 class="site-footer__heading" id="footer-product">{{chrome.footer.product}}</h2>
+          <ul>
+            <li><a href="{{page.href.index}}#owners">{{chrome.nav.owners}}</a></li>
+            <li><a href="{{page.href.index}}#providers">{{chrome.nav.providers}}</a></li>
+            <li><a href="{{page.href.index}}#how-it-works">{{chrome.nav.howItWorks}}</a></li>
+            <li><a href="{{page.href.index}}#download">{{chrome.nav.getApp}}</a></li>
+          </ul>
+        </nav>
+
+        <nav class="site-footer__col" aria-labelledby="footer-support">
+          <h2 class="site-footer__heading" id="footer-support">{{chrome.footer.support}}</h2>
+          <ul>
+            <li><a href="{{page.href.support}}">{{chrome.footer.contactSupport}}</a></li>
+            <li><a href="{{page.href.account-deletion}}">{{chrome.footer.accountDeletion}}</a></li>
+            <li><a href="{{page.href.data-deletion}}">{{chrome.footer.dataDeletion}}</a></li>
+          </ul>
+        </nav>
+
+        <nav class="site-footer__col" aria-labelledby="footer-legal">
+          <h2 class="site-footer__heading" id="footer-legal">{{chrome.footer.legal}}</h2>
+          <ul>
+            <li><a href="{{page.href.terms-of-service}}">{{chrome.footer.terms}}</a></li>
+            <li><a href="{{page.href.privacy-policy}}">{{chrome.footer.privacy}}</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="container site-footer__bottom">
+        <p>{{chrome.footer.copyright}}</p>
+        <p>{{chrome.footer.platforms}}</p>
+      </div>
+    </footer>
+
+    <script src="assets/js/site.js" defer></script>
+  </body>
+</html>

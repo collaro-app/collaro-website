@@ -1,0 +1,26 @@
+<div class="store-buttons">
+{{#if page.appStoreReady}}
+  <a class="store-btn" href="{{site.appStoreUrl}}" rel="noopener">
+    {{icon:store}}
+    <span class="store-btn__text"><span class="store-btn__eyebrow">{{chrome.store.appStoreEyebrow}}</span><span class="store-btn__name">{{chrome.store.appStore}}</span></span>
+  </a>
+{{/if}}
+{{#unless page.appStoreReady}}
+  <span class="store-btn store-btn--soon">
+    {{icon:store}}
+    <span class="store-btn__text"><span class="store-btn__eyebrow">{{chrome.store.appStoreSoonEyebrow}}</span><span class="store-btn__name">{{chrome.store.appStore}}</span></span>
+  </span>
+{{/unless}}
+{{#if page.playStoreReady}}
+  <a class="store-btn" href="{{site.playStoreUrl}}" rel="noopener">
+    {{icon:store}}
+    <span class="store-btn__text"><span class="store-btn__eyebrow">{{chrome.store.playEyebrow}}</span><span class="store-btn__name">{{chrome.store.play}}</span></span>
+  </a>
+{{/if}}
+{{#unless page.playStoreReady}}
+  <span class="store-btn store-btn--soon">
+    {{icon:store}}
+    <span class="store-btn__text"><span class="store-btn__eyebrow">{{chrome.store.playSoonEyebrow}}</span><span class="store-btn__name">{{chrome.store.play}}</span></span>
+  </span>
+{{/unless}}
+</div>

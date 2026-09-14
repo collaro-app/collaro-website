@@ -1,0 +1,5 @@
+# Everything text is LF: the build and the app's legal generator compare the
+# generated files byte-for-byte (`npm run check`, `npm run legal:html -- --check`),
+# so a CRLF checkout on Windows (core.autocrlf=true) must never change them.
+* text=auto eol=lf
+*.png binary

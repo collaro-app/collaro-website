@@ -1,0 +1,14 @@
+<!--page
+{ "strings": "notFound", "title": "{{notFound.meta.title}}", "description": "{{notFound.meta.description}}", "robots": "noindex" }
+-->
+      <section class="page-hero page-hero--center" aria-labelledby="nf-title">
+        <div class="container container--narrow">
+          <img class="download__mark" src="assets/img/logo/paw-tile.png" alt="" width="72" height="72" />
+          <h1 class="page-hero__title" id="nf-title">{{notFound.title}}</h1>
+          <p class="page-hero__lead">{{notFound.text}}</p>
+          <p class="btn-row">
+            <a class="btn btn--primary" href="{{page.href.index}}">{{notFound.cta}}</a>
+            <a class="btn btn--secondary" href="{{page.href.support}}">{{notFound.supportCta}}</a>
+          </p>
+        </div>
+      </section>

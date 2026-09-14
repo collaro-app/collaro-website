@@ -1,0 +1,341 @@
+<!--page
+{ "strings": "home", "title": "{{home.meta.title}}", "description": "{{home.meta.description}}" }
+-->
+      <!-- Hero -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero__inner">
+          <div class="hero__copy">
+            <p class="eyebrow">{{home.hero.eyebrow}}</p>
+            <h1 class="hero__title" id="hero-title">{{home.hero.title}}</h1>
+            <p class="hero__subtitle">{{home.hero.subtitle}}</p>
+            {{>store-buttons}}
+            <p class="hero__secondary">
+              <a class="link-arrow" href="#providers">{{home.hero.providerCta}} {{icon:arrow-right}}</a>
+            </p>
+          </div>
+          <div class="hero__visual reveal">
+            <img class="hero__banner" src="assets/img/screenshots/feature-banner.{{page.lang}}.jpg" alt="{{home.hero.bannerAlt}}" width="1600" height="783" fetchpriority="high" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Service types -->
+      <section class="section section--tight" aria-labelledby="services-title">
+        <div class="container">
+          <div class="section__header section__header--center">
+            <h2 class="section__title" id="services-title">{{home.services.title}}</h2>
+            <p class="section__subtitle">{{home.services.subtitle}}</p>
+          </div>
+          <ul class="service-grid reveal" role="list">
+            <li class="service-tile">
+              <span class="service-tile__icon">{{icon:bed}}</span>
+              <span class="service-tile__name">{{home.services.boarding}}</span>
+              <span class="service-tile__hint">{{home.services.boardingHint}}</span>
+            </li>
+            <li class="service-tile">
+              <span class="service-tile__icon">{{icon:home}}</span>
+              <span class="service-tile__name">{{home.services.homeSitting}}</span>
+              <span class="service-tile__hint">{{home.services.homeSittingHint}}</span>
+            </li>
+            <li class="service-tile">
+              <span class="service-tile__icon">{{icon:walk}}</span>
+              <span class="service-tile__name">{{home.services.dogWalking}}</span>
+              <span class="service-tile__hint">{{home.services.dogWalkingHint}}</span>
+            </li>
+            <li class="service-tile">
+              <span class="service-tile__icon">{{icon:scissors}}</span>
+              <span class="service-tile__name">{{home.services.grooming}}</span>
+              <span class="service-tile__hint">{{home.services.groomingHint}}</span>
+            </li>
+            <li class="service-tile">
+              <span class="service-tile__icon">{{icon:sun}}</span>
+              <span class="service-tile__name">{{home.services.dayCare}}</span>
+              <span class="service-tile__hint">{{home.services.dayCareHint}}</span>
+            </li>
+            <li class="service-tile">
+              <span class="service-tile__icon">{{icon:award}}</span>
+              <span class="service-tile__name">{{home.services.training}}</span>
+              <span class="service-tile__hint">{{home.services.trainingHint}}</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Screenshots -->
+      <section class="section section--alt" id="screenshots" aria-labelledby="screens-title">
+        <div class="container">
+          <div class="section__header section__header--center">
+            <h2 class="section__title" id="screens-title">{{home.screens.title}}</h2>
+            <p class="section__subtitle">{{home.screens.subtitle}}</p>
+          </div>
+        </div>
+        <div class="screens">
+          <ol class="screens__track" role="list" tabindex="0" aria-label="{{home.screens.listLabel}}">
+            <li class="screens__item reveal">
+              <figure class="shot">
+                <img src="assets/img/screenshots/map.{{page.lang}}.jpg" alt="{{home.screens.mapAlt}}" width="828" height="1792" loading="lazy" />
+              </figure>
+              <p class="screens__title">{{home.screens.mapTitle}}</p>
+            </li>
+            <li class="screens__item reveal">
+              <figure class="shot">
+                <img src="assets/img/screenshots/booking-flow.{{page.lang}}.jpg" alt="{{home.screens.bookingFlowAlt}}" width="828" height="1792" loading="lazy" />
+              </figure>
+              <p class="screens__title">{{home.screens.bookingFlowTitle}}</p>
+            </li>
+            <li class="screens__item reveal">
+              <figure class="shot">
+                <img src="assets/img/screenshots/booking-details.{{page.lang}}.jpg" alt="{{home.screens.bookingDetailsAlt}}" width="828" height="1792" loading="lazy" />
+              </figure>
+              <p class="screens__title">{{home.screens.bookingDetailsTitle}}</p>
+            </li>
+            <li class="screens__item reveal">
+              <figure class="shot">
+                <img src="assets/img/screenshots/chat.{{page.lang}}.jpg" alt="{{home.screens.chatAlt}}" width="828" height="1792" loading="lazy" />
+              </figure>
+              <p class="screens__title">{{home.screens.chatTitle}}</p>
+            </li>
+            <li class="screens__item reveal">
+              <figure class="shot">
+                <img src="assets/img/screenshots/dogs.{{page.lang}}.jpg" alt="{{home.screens.dogsAlt}}" width="828" height="1792" loading="lazy" />
+              </figure>
+              <p class="screens__title">{{home.screens.dogsTitle}}</p>
+            </li>
+            <li class="screens__item reveal">
+              <figure class="shot">
+                <img src="assets/img/screenshots/services.{{page.lang}}.jpg" alt="{{home.screens.servicesAlt}}" width="828" height="1792" loading="lazy" />
+              </figure>
+              <p class="screens__title">{{home.screens.servicesTitle}}</p>
+            </li>
+            <li class="screens__item reveal">
+              <figure class="shot">
+                <img src="assets/img/screenshots/dashboard.{{page.lang}}.jpg" alt="{{home.screens.dashboardAlt}}" width="828" height="1792" loading="lazy" />
+              </figure>
+              <p class="screens__title">{{home.screens.dashboardTitle}}</p>
+            </li>
+          </ol>
+          <p class="screens__hint" aria-hidden="true">{{home.screens.scrollHint}}</p>
+        </div>
+      </section>
+
+      <!-- For dog owners -->
+      <section class="section section--clip" id="owners" aria-labelledby="owners-title">
+        <div class="container split">
+          <div class="split__copy">
+            <p class="eyebrow">{{home.owners.eyebrow}}</p>
+            <h2 class="section__title" id="owners-title">{{home.owners.title}}</h2>
+            <p class="section__subtitle">{{home.owners.intro}}</p>
+            <ul class="feature-list" role="list">
+              <li class="feature">
+                <span class="feature__icon">{{icon:search}}</span>
+                <div>
+                  <h3 class="feature__title">{{home.owners.f1Title}}</h3>
+                  <p class="feature__text">{{home.owners.f1Text}}</p>
+                </div>
+              </li>
+              <li class="feature">
+                <span class="feature__icon">{{icon:user}}</span>
+                <div>
+                  <h3 class="feature__title">{{home.owners.f2Title}}</h3>
+                  <p class="feature__text">{{home.owners.f2Text}}</p>
+                </div>
+              </li>
+              <li class="feature">
+                <span class="feature__icon">{{icon:tag}}</span>
+                <div>
+                  <h3 class="feature__title">{{home.owners.f3Title}}</h3>
+                  <p class="feature__text">{{home.owners.f3Text}}</p>
+                </div>
+              </li>
+              <li class="feature">
+                <span class="feature__icon">{{icon:calendar}}</span>
+                <div>
+                  <h3 class="feature__title">{{home.owners.f4Title}}</h3>
+                  <p class="feature__text">{{home.owners.f4Text}}</p>
+                </div>
+              </li>
+              <li class="feature">
+                <span class="feature__icon">{{icon:chat}}</span>
+                <div>
+                  <h3 class="feature__title">{{home.owners.f5Title}}</h3>
+                  <p class="feature__text">{{home.owners.f5Text}}</p>
+                </div>
+              </li>
+              <li class="feature">
+                <span class="feature__icon">{{icon:paw}}</span>
+                <div>
+                  <h3 class="feature__title">{{home.owners.f6Title}}</h3>
+                  <p class="feature__text">{{home.owners.f6Text}}</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="split__visual reveal">
+            <figure class="shot shot--float">
+              <img src="assets/img/screenshots/dogs.{{page.lang}}.jpg" alt="{{home.owners.screenshotAlt}}" width="828" height="1792" loading="lazy" />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- For providers -->
+      <section class="section section--alt section--clip" id="providers" aria-labelledby="providers-title">
+        <div class="container split split--reverse">
+          <div class="split__copy">
+            <p class="eyebrow">{{home.providers.eyebrow}}</p>
+            <h2 class="section__title" id="providers-title">{{home.providers.title}}</h2>
+            <p class="section__subtitle">{{home.providers.intro}}</p>
+            <ul class="feature-list" role="list">
+              <li class="feature">
+                <span class="feature__icon">{{icon:briefcase}}</span>
+                <div>
+                  <h3 class="feature__title">{{home.providers.f1Title}}</h3>
+                  <p class="feature__text">{{home.providers.f1Text}}</p>
+                </div>
+              </li>
+              <li class="feature">
+                <span class="feature__icon">{{icon:layers}}</span>
+                <div>
+                  <h3 class="feature__title">{{home.providers.f2Title}}</h3>
+                  <p class="feature__text">{{home.providers.f2Text}}</p>
+                </div>
+              </li>
+              <li class="feature">
+                <span class="feature__icon">{{icon:clock}}</span>
+                <div>
+                  <h3 class="feature__title">{{home.providers.f3Title}}</h3>
+                  <p class="feature__text">{{home.providers.f3Text}}</p>
+                </div>
+              </li>
+              <li class="feature">
+                <span class="feature__icon">{{icon:list-check}}</span>
+                <div>
+                  <h3 class="feature__title">{{home.providers.f4Title}}</h3>
+                  <p class="feature__text">{{home.providers.f4Text}}</p>
+                </div>
+              </li>
+              <li class="feature">
+                <span class="feature__icon">{{icon:chat}}</span>
+                <div>
+                  <h3 class="feature__title">{{home.providers.f5Title}}</h3>
+                  <p class="feature__text">{{home.providers.f5Text}}</p>
+                </div>
+              </li>
+              <li class="feature">
+                <span class="feature__icon">{{icon:star}}</span>
+                <div>
+                  <h3 class="feature__title">{{home.providers.f6Title}}</h3>
+                  <p class="feature__text">{{home.providers.f6Text}}</p>
+                </div>
+              </li>
+            </ul>
+            <aside class="note">
+              <span class="note__icon">{{icon:sparkles}}</span>
+              <div>
+                <h3 class="note__title">{{home.providers.noteTitle}}</h3>
+                <p class="note__text">{{home.providers.noteText}}</p>
+              </div>
+            </aside>
+          </div>
+          <div class="split__visual reveal">
+            <figure class="shot shot--float">
+              <img src="assets/img/screenshots/services.{{page.lang}}.jpg" alt="{{home.providers.screenshotAlt}}" width="828" height="1792" loading="lazy" />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section class="section" id="how-it-works" aria-labelledby="how-title">
+        <div class="container">
+          <div class="section__header section__header--center">
+            <p class="eyebrow">{{home.how.eyebrow}}</p>
+            <h2 class="section__title" id="how-title">{{home.how.title}}</h2>
+          </div>
+          <ol class="steps reveal" role="list">
+            <li class="step">
+              <span class="step__number" aria-hidden="true">1</span>
+              <span class="step__icon">{{icon:map-pin}}</span>
+              <h3 class="step__title">{{home.how.s1Title}}</h3>
+              <p class="step__text">{{home.how.s1Text}}</p>
+            </li>
+            <li class="step">
+              <span class="step__number" aria-hidden="true">2</span>
+              <span class="step__icon">{{icon:user}}</span>
+              <h3 class="step__title">{{home.how.s2Title}}</h3>
+              <p class="step__text">{{home.how.s2Text}}</p>
+            </li>
+            <li class="step">
+              <span class="step__number" aria-hidden="true">3</span>
+              <span class="step__icon">{{icon:calendar}}</span>
+              <h3 class="step__title">{{home.how.s3Title}}</h3>
+              <p class="step__text">{{home.how.s3Text}}</p>
+            </li>
+            <li class="step">
+              <span class="step__number" aria-hidden="true">4</span>
+              <span class="step__icon">{{icon:paw}}</span>
+              <h3 class="step__title">{{home.how.s4Title}}</h3>
+              <p class="step__text">{{home.how.s4Text}}</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Why Collaro -->
+      <section class="section section--brand" id="why" aria-labelledby="why-title">
+        <div class="container">
+          <div class="section__header section__header--center">
+            <p class="eyebrow eyebrow--on-brand">{{home.why.eyebrow}}</p>
+            <h2 class="section__title" id="why-title">{{home.why.title}}</h2>
+            <p class="section__subtitle">{{home.why.subtitle}}</p>
+          </div>
+          <ul class="value-grid reveal" role="list">
+            <li class="value-card">
+              <span class="value-card__icon">{{icon:layers}}</span>
+              <h3 class="value-card__title">{{home.why.c1Title}}</h3>
+              <p class="value-card__text">{{home.why.c1Text}}</p>
+            </li>
+            <li class="value-card">
+              <span class="value-card__icon">{{icon:shield-check}}</span>
+              <h3 class="value-card__title">{{home.why.c2Title}}</h3>
+              <p class="value-card__text">{{home.why.c2Text}}</p>
+            </li>
+            <li class="value-card">
+              <span class="value-card__icon">{{icon:chat}}</span>
+              <h3 class="value-card__title">{{home.why.c3Title}}</h3>
+              <p class="value-card__text">{{home.why.c3Text}}</p>
+            </li>
+            <li class="value-card">
+              <span class="value-card__icon">{{icon:heart-hands}}</span>
+              <h3 class="value-card__title">{{home.why.c4Title}}</h3>
+              <p class="value-card__text">{{home.why.c4Text}}</p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Support -->
+      <section class="section" id="support" aria-labelledby="support-title">
+        <div class="container container--narrow">
+          <div class="contact-card reveal">
+            <span class="contact-card__icon">{{icon:mail}}</span>
+            <p class="eyebrow">{{home.support.eyebrow}}</p>
+            <h2 class="section__title" id="support-title">{{home.support.title}}</h2>
+            <p class="section__subtitle">{{home.support.text}}</p>
+            <p class="contact-card__email">
+              <a class="btn btn--primary" href="mailto:{{site.contactEmail}}">{{icon:mail}} {{site.contactEmail}}</a>
+            </p>
+            <p><a class="link-arrow" href="{{page.href.support}}">{{home.support.cta}} {{icon:arrow-right}}</a></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Download -->
+      <section class="section section--download" id="download" aria-labelledby="download-title">
+        <div class="container download reveal">
+          <img class="download__mark" src="assets/img/logo/paw-tile.png" alt="" width="72" height="72" loading="lazy" />
+          <h2 class="section__title" id="download-title">{{home.download.title}}</h2>
+          <p class="section__subtitle">{{home.download.text}}</p>
+          {{>store-buttons}}
+        </div>
+      </section>

@@ -1,0 +1,201 @@
+{
+  "chrome": {
+    "languageName": "English",
+    "skipToContent": "Skip to content",
+    "brandHomeLabel": "Collaro — home",
+    "menuLabel": "Menu",
+    "primaryNavLabel": "Primary",
+    "ogImageAlt": "Your dog’s care, all around you — a smiling golden retriever beside the Collaro paw logo",
+    "nav": {
+      "owners": "For owners",
+      "providers": "For providers",
+      "howItWorks": "How it works",
+      "support": "Support",
+      "getApp": "Get the app"
+    },
+    "store": {
+      "appStoreEyebrow": "Download on the",
+      "appStore": "App Store",
+      "appStoreSoonEyebrow": "Coming soon to the",
+      "playEyebrow": "Get it on",
+      "play": "Google Play",
+      "playSoonEyebrow": "Coming soon on"
+    },
+    "footer": {
+      "tagline": "The perfect care for your dog.",
+      "product": "Product",
+      "support": "Support",
+      "legal": "Legal",
+      "contactSupport": "Contact & support",
+      "accountDeletion": "Account deletion",
+      "dataDeletion": "Deleting your data",
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "copyright": "© Collaro. All rights reserved.",
+      "platforms": "Collaro is a mobile app for iOS and Android, available in English and Hebrew."
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Collaro — The perfect care for your dog",
+      "description": "Collaro connects dog owners with dog service providers. Discover boarding, home sitting, dog walking, grooming, day care and training near you, explore providers, and send a booking request — all in one app."
+    },
+    "hero": {
+      "eyebrow": "Dog services marketplace · iOS & Android",
+      "title": "Find and book the perfect care for your dog",
+      "subtitle": "Collaro connects dog owners with dog service providers. Discover providers near you, explore their services, prices and availability, and send a booking request in a few taps. Providers publish their services and manage bookings from the same app.",
+      "providerCta": "I'm a provider",
+      "bannerAlt": "Your dog's care, all around you — a smiling golden retriever beside the Collaro paw logo"
+    },
+    "services": {
+      "title": "Six kinds of care",
+      "subtitle": "Every service on Collaro is one of six types, so you always know exactly what you're booking.",
+      "boarding": "Boarding",
+      "boardingHint": "Overnight stays, priced per day",
+      "homeSitting": "Home Sitting",
+      "homeSittingHint": "Care at your home, priced per hour",
+      "dogWalking": "Dog Walking",
+      "dogWalkingHint": "Walks, priced per hour",
+      "grooming": "Grooming",
+      "groomingHint": "Fixed-price appointments",
+      "dayCare": "Day Care",
+      "dayCareHint": "Daytime care, priced per day",
+      "training": "Training",
+      "trainingHint": "Fixed-price sessions"
+    },
+    "screens": {
+      "title": "See Collaro in action",
+      "subtitle": "The same screens you'll find on the App Store and Google Play.",
+      "listLabel": "App screenshots",
+      "scrollHint": "Swipe to see more",
+      "mapTitle": "Discover providers on the map",
+      "mapAlt": "Store screenshot titled “Your dog's care. On the map.” — the Collaro map with provider pins, a search bar, a Show dog parks toggle and a provider card marked Verified",
+      "bookingFlowTitle": "Book in a few taps",
+      "bookingFlowAlt": "Store screenshot titled “Their next stay. A few taps away.” — the booking flow: choose a service and your dogs, pick dates and drop-off/pick-up times, then a booking summary with the total and a Send booking request button",
+      "bookingDetailsTitle": "Every booking, one clear view",
+      "bookingDetailsAlt": "Store screenshot titled “Every detail. One clear view.” — a booking's details: provider, dates and time, dog details, notes for the provider, status, total and the direct-payment note",
+      "chatTitle": "Chat with your provider",
+      "chatAlt": "Store screenshot titled “Great care starts with a chat.” — a conversation between a dog owner and a provider about a grooming appointment",
+      "dogsTitle": "Your dogs in one place",
+      "dogsAlt": "Store screenshot titled “Your dogs. All in one place.” — the My Dogs screen listing three dogs with their breed, age, size and gender",
+      "servicesTitle": "Publish and manage your services",
+      "servicesAlt": "Store screenshot titled “Your services. Your way.” — the provider's My Services screen with Boarding, Grooming and Training, their starting prices and status, and icons for pricing, availability and dog capacity",
+      "dashboardTitle": "Your business at a glance",
+      "dashboardAlt": "Store screenshot titled “Your business. At a glance.” — the provider dashboard with pending requests, upcoming bookings, average rating, earnings, active services and recent reviews"
+    },
+    "owners": {
+      "eyebrow": "For dog owners",
+      "title": "Everything you need to find and book care",
+      "intro": "Whether it's a weekend of boarding or a daily walk, Collaro helps you find the right provider and manage the booking from start to finish.",
+      "screenshotAlt": "Store screenshot of the My Dogs screen in Collaro: three dog profiles with breed, age, size and gender, each with edit and delete buttons",
+      "f1Title": "Discover services near you",
+      "f1Text": "Browse providers on a map, search by name, city or street, and filter by service type, provider type, rating, completed bookings or verified status.",
+      "f2Title": "Explore provider profiles",
+      "f2Text": "Photos, an about section, the services they offer, and ratings and reviews from other dog owners.",
+      "f3Title": "Prices and availability up front",
+      "f3Text": "See each service's pricing and schedule, choose dates and times that are actually free, and get the price before you send a request.",
+      "f4Title": "Book in a few taps",
+      "f4Text": "Choose your dog, your dates and times, add a note for the provider, and send a booking request. The provider accepts and you're notified.",
+      "f5Title": "Chat with your provider",
+      "f5Text": "Once a booking is accepted, message each other directly in the app.",
+      "f6Title": "Manage bookings and dogs in one place",
+      "f6Text": "Keep your dogs' profiles, upcoming and past bookings, invoices and reviews together — and leave a review once a booking is complete and paid."
+    },
+    "providers": {
+      "eyebrow": "For providers",
+      "title": "Offer your services and manage bookings from your phone",
+      "intro": "Boarding, home sitting, dog walking, grooming, day care or training — Collaro gives you a profile, a booking inbox and the tools to run your day.",
+      "screenshotAlt": "Store screenshot of the provider's My Services screen: Boarding, Grooming and Training with starting prices, plus pricing, availability and dog capacity",
+      "f1Title": "Create your provider profile",
+      "f1Text": "Add photos, describe what you offer, pin your location, and present yourself as a business or a private provider.",
+      "f2Title": "Publish your services",
+      "f2Text": "List any of the six service types with a description and how many dogs you can take at once.",
+      "f3Title": "Set your prices and availability",
+      "f3Text": "Weekly schedules or specific dates, working hours, and flat or size-based pricing — you decide, and Collaro shows it to owners.",
+      "f4Title": "Receive and manage bookings",
+      "f4Text": "Accept or decline requests, see each dog's details and the owner's notes, and keep track of upcoming and completed bookings.",
+      "f5Title": "Chat with dog owners",
+      "f5Text": "Once you accept a booking, message the owner directly in the app.",
+      "f6Title": "Build your presence",
+      "f6Text": "Collect ratings and reviews from completed bookings, showcase your gallery, and stand out with a Verified badge after an optional identity check (a PRO feature).",
+      "noteTitle": "Free to start",
+      "noteText": "Every provider starts on the Free plan. Owners pay you directly — Collaro doesn't take a commission or add fees to your bookings. A PRO plan with higher limits and extra tools is available; contact us to learn more."
+    },
+    "how": {
+      "eyebrow": "How it works",
+      "title": "From “I need a dog sitter” to booked, in four steps",
+      "s1Title": "Discover",
+      "s1Text": "Open the map, search or filter, and find providers near you.",
+      "s2Title": "Explore",
+      "s2Text": "Compare profiles, services, prices, ratings and reviews.",
+      "s3Title": "Request",
+      "s3Text": "Pick your dog, dates and times, see the price, and send a booking request.",
+      "s4Title": "Get going",
+      "s4Text": "The provider accepts, you're notified, and you can chat in the app. You arrange payment directly with the provider."
+    },
+    "why": {
+      "eyebrow": "Why Collaro",
+      "title": "Dog care, without the back-and-forth",
+      "subtitle": "Finding dog care usually means scattered messages, unclear prices and a lot of guesswork. Collaro brings owners and providers together in one place.",
+      "c1Title": "Everything in one place",
+      "c1Text": "Discovery, profiles, availability, booking requests, messages and reviews — one app instead of a dozen chats.",
+      "c2Title": "Clear before you commit",
+      "c2Text": "Service details, pricing, availability, ratings and reviews are visible before you send a request — and nothing is booked until the provider accepts.",
+      "c3Title": "Direct and simple",
+      "c3Text": "You and your provider talk directly in the app and arrange payment between you. Collaro doesn't add fees or commission to bookings.",
+      "c4Title": "Built for both sides",
+      "c4Text": "Owners get a simple way to find care; providers get a profile, a booking inbox and tools to manage their work — in English and Hebrew, on iOS and Android."
+    },
+    "support": {
+      "eyebrow": "Support",
+      "title": "Questions? We're here to help.",
+      "text": "Email us and a human will get back to you as soon as we can — in English or Hebrew.",
+      "cta": "Visit the support page"
+    },
+    "download": {
+      "title": "Get Collaro",
+      "text": "Find and book dog services, or offer your own. Free to download on iOS and Android."
+    }
+  },
+  "support": {
+    "meta": {
+      "title": "Support",
+      "description": "How to contact Collaro support, what to include in your message, and where to find the legal, account-deletion and data-deletion pages."
+    },
+    "title": "Support",
+    "lead": "Questions, problems with your account, a booking issue, a privacy request, or anything else — email us and a human will get back to you.",
+    "emailCta": "Email support",
+    "responseNote": "We read every message and get back to you as soon as we can.",
+    "includeTitle": "To help us answer faster, please include:",
+    "include1": "The email address of your Collaro account",
+    "include2": "Whether you're a dog owner or a service provider",
+    "include3": "A short description of the issue (and a screenshot, if you have one)",
+    "languages": "You can write to us in English or Hebrew.",
+    "inAppTitle": "From inside the app",
+    "inAppText": "Open the side menu and tap <strong>Contact us</strong> to send us a message from your account.",
+    "deletionTitle": "Deleting your account or data",
+    "deletionText": "You can delete your account from inside the app: open the side menu → <strong>Settings</strong> → scroll to the bottom and tap <strong>Delete account</strong>. If you can no longer sign in, email us from the address registered to your account and we'll handle it for you.",
+    "deletionLinksIntro": "See what is removed and what we're required to retain:",
+    "accountDeletionLink": "Account deletion",
+    "dataDeletionLink": "Deleting your data",
+    "legalTitle": "Legal documents",
+    "legalText": "The documents that govern your use of Collaro (each page has a language switch for the Hebrew version):",
+    "termsLink": "Terms of Service",
+    "privacyLink": "Privacy Policy",
+    "aboutTitle": "About",
+    "aboutOperator": "Operator: Collaro, operated by Ofek Levi",
+    "aboutContact": "Contact:",
+    "aboutPostal": "Postal address: Israel, Rosh HaAyin, Yorrm Hatuka 36",
+    "eyebrow": "We’re here to help"
+  },
+  "notFound": {
+    "meta": {
+      "title": "Page not found",
+      "description": "The page you were looking for doesn't exist on collaro.app."
+    },
+    "title": "Page not found",
+    "text": "The page you were looking for doesn't exist or has moved.",
+    "cta": "Back to the homepage",
+    "supportCta": "Contact support"
+  }
+}
