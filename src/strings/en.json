@@ -38,7 +38,7 @@
   "home": {
     "meta": {
       "title": "Collaro — The perfect care for your dog",
-      "description": "Collaro connects dog owners with dog service providers. Discover boarding, home sitting, dog walking, grooming, day care and training near you, explore providers, and send a booking request — all in one app."
+      "description": "Collaro connects dog owners with dog service providers. Discover boarding, home sitting, dog walking, grooming and training near you, explore providers, and send a booking request — all in one app."
     },
     "hero": {
       "eyebrow": "Dog services marketplace · iOS & Android",
@@ -48,8 +48,8 @@
       "bannerAlt": "Your dog's care, all around you — a smiling golden retriever beside the Collaro paw logo"
     },
     "services": {
-      "title": "Six kinds of care",
-      "subtitle": "Every service on Collaro is one of six types, so you always know exactly what you're booking.",
+      "title": "Five kinds of care",
+      "subtitle": "Every service on Collaro is one of five types, so you always know exactly what you're booking.",
       "boarding": "Boarding",
       "boardingHint": "Overnight stays, priced per day",
       "homeSitting": "Home Sitting",
@@ -58,8 +58,6 @@
       "dogWalkingHint": "Walks, priced per hour",
       "grooming": "Grooming",
       "groomingHint": "Fixed-price appointments",
-      "dayCare": "Day Care",
-      "dayCareHint": "Daytime care, priced per day",
       "training": "Training",
       "trainingHint": "Fixed-price sessions"
     },
@@ -104,12 +102,12 @@
     "providers": {
       "eyebrow": "For providers",
       "title": "Offer your services and manage bookings from your phone",
-      "intro": "Boarding, home sitting, dog walking, grooming, day care or training — Collaro gives you a profile, a booking inbox and the tools to run your day.",
+      "intro": "Boarding, home sitting, dog walking, grooming or training — Collaro gives you a profile, a booking inbox and the tools to run your day.",
       "screenshotAlt": "Store screenshot of the provider's My Services screen: Boarding, Grooming and Training with starting prices, plus pricing, availability and dog capacity",
       "f1Title": "Create your provider profile",
       "f1Text": "Add photos, describe what you offer, pin your location, and present yourself as a business or a private provider.",
       "f2Title": "Publish your services",
-      "f2Text": "List any of the six service types with a description and how many dogs you can take at once.",
+      "f2Text": "List any of the five service types with a description and how many dogs you can take at once.",
       "f3Title": "Set your prices and availability",
       "f3Text": "Weekly schedules or specific dates, working hours, and flat or size-based pricing — you decide, and Collaro shows it to owners.",
       "f4Title": "Receive and manage bookings",
