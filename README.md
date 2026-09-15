@@ -27,7 +27,10 @@ scripts/
   legal-redirects.mjs    cutover helper for the old legal.collaro.app repo (run only when told to)
   optimize-screenshots.ps1  store artwork → web-sized docs/assets/img/screenshots/*.jpg + the OG card
 docs/                    THE PUBLISHED SITE (GitHub Pages: branch main, folder /docs)
-  *.html, sitemap.xml    generated — do not edit by hand
+  <page>/index.html      generated — do not edit by hand (one directory per page = its URL;
+  <page>/he/index.html     the Hebrew copy sits in he/ below it; the home page is index.html)
+  *.he.html, sitemap.xml generated — redirect stubs for the old flat URLs, and the sitemap
+  404.html               generated — the one page that must stay a root file
   assets/css, js, img    hand-managed static files (store artwork under assets/img/screenshots/)
   CNAME, .nojekyll, robots.txt
 ```
@@ -36,17 +39,18 @@ docs/                    THE PUBLISHED SITE (GitHub Pages: branch main, folder /
 
 ```
 npm run build   # render src/ → docs/
-npm run serve   # preview at http://localhost:8080 (behaves like GitHub Pages: /support, 404 page)
+npm run serve   # preview at http://localhost:8080 (behaves like GitHub Pages: /support/, 404 page)
 npm run check   # fail if docs/ is out of date (run before committing)
 ```
 
-You can also just open `docs/index.html` straight from the file system (every path is relative);
-only the 404 page needs the server. Commit `src/` **and** `docs/` together.
+Preview with `npm run serve` — every link and asset path is root-relative (`/assets/…`,
+`/privacy-policy/`), so the pages do not work opened straight from the file system.
+Commit `src/` **and** `docs/` together.
 
 - **Copy** lives in `src/strings/en.json`. The pages only reference keys, so wording changes never
   touch markup. An unknown key fails the build.
 - **Languages**: a page template is rendered in every language whose strings file has its
-  namespace (`home`, `support`, `notFound`), so `index.he.html` / `support.he.html` come from
+  namespace (`home`, `support`, `notFound`), so `/he/` and `/support/he/` come from
   `he.json` automatically, with `dir="rtl"`, the Hebrew store artwork and a language switch in the
   header of every page that has a twin. A third language = one more `strings/<lang>.json`.
 - **Store links**: set `appStoreUrl` / `playStoreUrl` in `src/site.json`. While they are empty the
@@ -61,17 +65,28 @@ only the 404 page needs the server. Commit `src/` **and** `docs/` together.
 
 ## URLs
 
-| Page | URL |
-| --- | --- |
-| Home | `https://collaro.app/` · `…/index.he.html` |
-| Support | `https://collaro.app/support` · `…/support.he.html` |
-| Terms of Service | `https://collaro.app/terms-of-service` · `…/terms-of-service.he.html` |
-| Privacy Policy | `https://collaro.app/privacy-policy` · `…/privacy-policy.he.html` |
-| Account Deletion | `https://collaro.app/account-deletion` · `…/account-deletion.he.html` |
-| Deleting Your Data | `https://collaro.app/data-deletion` · `…/data-deletion.he.html` |
+| Page | English | Hebrew |
+| --- | --- | --- |
+| Home | `https://collaro.app/` | `https://collaro.app/he/` |
+| Support | `https://collaro.app/support/` | `https://collaro.app/support/he/` |
+| Terms of Service | `https://collaro.app/terms-of-service/` | `https://collaro.app/terms-of-service/he/` |
+| Privacy Policy | `https://collaro.app/privacy-policy/` | `https://collaro.app/privacy-policy/he/` |
+| Account Deletion | `https://collaro.app/account-deletion/` | `https://collaro.app/account-deletion/he/` |
+| Deleting Your Data | `https://collaro.app/data-deletion/` | `https://collaro.app/data-deletion/he/` |
 
-GitHub Pages serves `/support` from `support.html`, so the extensionless URLs work without
-redirects; the legal slugs are exactly the ones the old `legal.collaro.app` site used.
+Every page is a directory with an `index.html`, so the URL is the directory: no `.html`, no
+language suffix (the slugs are the ones the old `legal.collaro.app` site used). GitHub Pages
+serves a directory only at its trailing-slash form and redirects `/support` → `/support/` itself,
+so the extensionless links in the app and the store listings keep working.
+
+The old flat addresses are kept alive too:
+
+- `/<page>.he.html` (e.g. `/terms-of-service.he.html`) is a generated redirect stub — meta
+  refresh + canonical — to `/<page>/he/`.
+- `/<page>.html` (e.g. `/terms-of-service.html`) cannot have a stub: GitHub Pages would then
+  serve that file for `/<page>` instead of redirecting into `/<page>/`. Those links land on the
+  404 page, which forwards them to the clean URL with a line of JavaScript. (They were never
+  published anywhere — the app, the stores and the sitemap always used the extensionless form.)
 
 ## The legal pages
 

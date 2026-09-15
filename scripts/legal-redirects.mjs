@@ -12,10 +12,10 @@
  *
  *   node scripts/legal-redirects.mjs --out ../Collaro-legal
  *
- * Mapping (old → new): the file names are identical, so
- *   legal.collaro.app/terms-of-service(.html)   → collaro.app/terms-of-service
- *   legal.collaro.app/terms-of-service.he.html  → collaro.app/terms-of-service.he.html
- *   legal.collaro.app/                          → collaro.app/support
+ * Mapping (old → new): each old page goes to its clean URL on the new site, so
+ *   legal.collaro.app/terms-of-service(.html)   → collaro.app/terms-of-service/
+ *   legal.collaro.app/terms-of-service.he.html  → collaro.app/terms-of-service/he/
+ *   legal.collaro.app/                          → collaro.app/support/
  * (the old root rendered the repo README as a support/legal landing page).
  *
  * Keep the old repo's GitHub Pages + CNAME enabled for as long as the redirects
@@ -28,15 +28,15 @@ const SITE = 'https://collaro.app';
 
 /** old file → new public path */
 const REDIRECTS = {
-  'index.html': '/support',
-  'terms-of-service.html': '/terms-of-service',
-  'terms-of-service.he.html': '/terms-of-service.he.html',
-  'privacy-policy.html': '/privacy-policy',
-  'privacy-policy.he.html': '/privacy-policy.he.html',
-  'account-deletion.html': '/account-deletion',
-  'account-deletion.he.html': '/account-deletion.he.html',
-  'data-deletion.html': '/data-deletion',
-  'data-deletion.he.html': '/data-deletion.he.html',
+  'index.html': '/support/',
+  'terms-of-service.html': '/terms-of-service/',
+  'terms-of-service.he.html': '/terms-of-service/he/',
+  'privacy-policy.html': '/privacy-policy/',
+  'privacy-policy.he.html': '/privacy-policy/he/',
+  'account-deletion.html': '/account-deletion/',
+  'account-deletion.he.html': '/account-deletion/he/',
+  'data-deletion.html': '/data-deletion/',
+  'data-deletion.he.html': '/data-deletion/he/',
 };
 
 const stub = (target) => `<!doctype html>

@@ -30,7 +30,7 @@
 
     <header class="site-header" id="top">
       <div class="container site-header__inner">
-        <a class="brand" href="/index.html" aria-label="Collaro — home">
+        <a class="brand" href="/" aria-label="Collaro — home">
           <img class="brand__mark" src="/assets/img/logo/paw-tile.png" alt="" width="36" height="36" />
           <span class="brand__name">Collaro</span>
         </a>
@@ -49,12 +49,12 @@
 
         <nav class="site-nav" id="site-nav" aria-label="Primary">
           <ul class="site-nav__list">
-            <li><a href="/index.html#owners">For owners</a></li>
-            <li><a href="/index.html#providers">For providers</a></li>
-            <li><a href="/index.html#how-it-works">How it works</a></li>
-            <li><a href="/support.html">Support</a></li>
+            <li><a href="/#owners">For owners</a></li>
+            <li><a href="/#providers">For providers</a></li>
+            <li><a href="/#how-it-works">How it works</a></li>
+            <li><a href="/support/">Support</a></li>
 
-            <li class="site-nav__cta"><a class="btn btn--primary btn--sm" href="/index.html#download">Get the app</a></li>
+            <li class="site-nav__cta"><a class="btn btn--primary btn--sm" href="/#download">Get the app</a></li>
           </ul>
         </nav>
       </div>
@@ -69,11 +69,26 @@
           <h1 class="page-hero__title" id="nf-title">Page not found</h1>
           <p class="page-hero__lead">The page you were looking for doesn't exist or has moved.</p>
           <p class="btn-row">
-            <a class="btn btn--primary" href="/index.html">Back to the homepage</a>
-            <a class="btn btn--secondary" href="/support.html">Contact support</a>
+            <a class="btn btn--primary" href="/">Back to the homepage</a>
+            <a class="btn btn--secondary" href="/support/">Contact support</a>
           </p>
         </div>
       </section>
+      <!--
+        The pages used to be flat files (support.html, terms-of-service.he.html).
+        GitHub Pages serves this page for any missing path, so an old link of that
+        shape is forwarded to the page's clean URL here (/support/, /terms-of-service/he/).
+        The <name>.he.html addresses also get real redirect stubs from the build; this
+        covers <name>.html, which cannot have a stub without shadowing /<name> itself.
+      -->
+      <script>
+        (function () {
+          var old = location.pathname.match(/^\/([a-z0-9-]+)(?:\.([a-z]{2}))?\.html$/);
+          if (!old || old[1] === "404") return;
+          var target = (old[1] === "index" ? "/" : "/" + old[1] + "/") + (old[2] ? old[2] + "/" : "");
+          location.replace(target + location.search + location.hash);
+        })();
+      </script>
 
 
     </main>
@@ -81,7 +96,7 @@
     <footer class="site-footer">
       <div class="container site-footer__inner">
         <div class="site-footer__brand">
-          <a class="brand" href="/index.html" aria-label="Collaro — home">
+          <a class="brand" href="/" aria-label="Collaro — home">
             <img class="brand__mark" src="/assets/img/logo/paw-tile.png" alt="" width="36" height="36" />
             <span class="brand__name">Collaro</span>
           </a>
@@ -94,27 +109,27 @@
         <nav class="site-footer__col" aria-labelledby="footer-product">
           <h2 class="site-footer__heading" id="footer-product">Product</h2>
           <ul>
-            <li><a href="/index.html#owners">For owners</a></li>
-            <li><a href="/index.html#providers">For providers</a></li>
-            <li><a href="/index.html#how-it-works">How it works</a></li>
-            <li><a href="/index.html#download">Get the app</a></li>
+            <li><a href="/#owners">For owners</a></li>
+            <li><a href="/#providers">For providers</a></li>
+            <li><a href="/#how-it-works">How it works</a></li>
+            <li><a href="/#download">Get the app</a></li>
           </ul>
         </nav>
 
         <nav class="site-footer__col" aria-labelledby="footer-support">
           <h2 class="site-footer__heading" id="footer-support">Support</h2>
           <ul>
-            <li><a href="/support.html">Contact & support</a></li>
-            <li><a href="/account-deletion.html">Account deletion</a></li>
-            <li><a href="/data-deletion.html">Deleting your data</a></li>
+            <li><a href="/support/">Contact & support</a></li>
+            <li><a href="/account-deletion/">Account deletion</a></li>
+            <li><a href="/data-deletion/">Deleting your data</a></li>
           </ul>
         </nav>
 
         <nav class="site-footer__col" aria-labelledby="footer-legal">
           <h2 class="site-footer__heading" id="footer-legal">Legal</h2>
           <ul>
-            <li><a href="/terms-of-service.html">Terms of Service</a></li>
-            <li><a href="/privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="/terms-of-service/">Terms of Service</a></li>
+            <li><a href="/privacy-policy/">Privacy Policy</a></li>
           </ul>
         </nav>
       </div>

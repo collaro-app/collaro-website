@@ -3,7 +3,7 @@
 -->
       <section class="page-hero page-hero--center" aria-labelledby="nf-title">
         <div class="container container--narrow">
-          <img class="download__mark" src="assets/img/logo/paw-tile.png" alt="" width="72" height="72" />
+          <img class="download__mark" src="/assets/img/logo/paw-tile.png" alt="" width="72" height="72" />
           <h1 class="page-hero__title" id="nf-title">{{notFound.title}}</h1>
           <p class="page-hero__lead">{{notFound.text}}</p>
           <p class="btn-row">
@@ -12,3 +12,18 @@
           </p>
         </div>
       </section>
+      <!--
+        The pages used to be flat files (support.html, terms-of-service.he.html).
+        GitHub Pages serves this page for any missing path, so an old link of that
+        shape is forwarded to the page's clean URL here (/support/, /terms-of-service/he/).
+        The <name>.he.html addresses also get real redirect stubs from the build; this
+        covers <name>.html, which cannot have a stub without shadowing /<name> itself.
+      -->
+      <script>
+        (function () {
+          var old = location.pathname.match(/^\/([a-z0-9-]+)(?:\.([a-z]{2}))?\.html$/);
+          if (!old || old[1] === "404") return;
+          var target = (old[1] === "index" ? "/" : "/" + old[1] + "/") + (old[2] ? old[2] + "/" : "");
+          location.replace(target + location.search + location.hash);
+        })();
+      </script>

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://collaro.app/</loc></url>
-  <url><loc>https://collaro.app/index.he.html</loc></url>
-  <url><loc>https://collaro.app/support</loc></url>
-  <url><loc>https://collaro.app/support.he.html</loc></url>
-  <url><loc>https://collaro.app/account-deletion</loc></url>
-  <url><loc>https://collaro.app/account-deletion.he.html</loc></url>
-  <url><loc>https://collaro.app/data-deletion</loc></url>
-  <url><loc>https://collaro.app/data-deletion.he.html</loc></url>
-  <url><loc>https://collaro.app/privacy-policy</loc></url>
-  <url><loc>https://collaro.app/privacy-policy.he.html</loc></url>
-  <url><loc>https://collaro.app/terms-of-service</loc></url>
-  <url><loc>https://collaro.app/terms-of-service.he.html</loc></url>
+  <url><loc>https://collaro.app/he/</loc></url>
+  <url><loc>https://collaro.app/support/</loc></url>
+  <url><loc>https://collaro.app/support/he/</loc></url>
+  <url><loc>https://collaro.app/account-deletion/</loc></url>
+  <url><loc>https://collaro.app/account-deletion/he/</loc></url>
+  <url><loc>https://collaro.app/data-deletion/</loc></url>
+  <url><loc>https://collaro.app/data-deletion/he/</loc></url>
+  <url><loc>https://collaro.app/privacy-policy/</loc></url>
+  <url><loc>https://collaro.app/privacy-policy/he/</loc></url>
+  <url><loc>https://collaro.app/terms-of-service/</loc></url>
+  <url><loc>https://collaro.app/terms-of-service/he/</loc></url>
 </urlset>

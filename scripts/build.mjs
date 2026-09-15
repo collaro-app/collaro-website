@@ -30,17 +30,28 @@
  * block per item. An unknown placeholder FAILS the build — a typo or a missing
  * translation must never ship as literal braces.
  *
- * Output naming follows the URLs the legal site already had, so nothing moves:
- *   pages/index.html  + en → docs/index.html          (and he → docs/index.he.html)
- *   legal/terms-of-service.en.html → docs/terms-of-service.html
- *   legal/terms-of-service.he.html → docs/terms-of-service.he.html
- * GitHub Pages serves `/terms-of-service` from `terms-of-service.html`.
+ * Output naming gives every page a clean URL — a directory with an index.html,
+ * no `.html` and no language suffix in the address:
+ *   pages/index.html   + en → docs/index.html                     → /
+ *   pages/index.html   + he → docs/he/index.html                  → /he/
+ *   pages/support.html + en → docs/support/index.html             → /support/
+ *   legal/terms-of-service.en.html → docs/terms-of-service/index.html    → /terms-of-service/
+ *   legal/terms-of-service.he.html → docs/terms-of-service/he/index.html → /terms-of-service/he/
+ * Only `404.html` stays a root file (GitHub Pages looks for it there). Because
+ * pages now sit at different depths, every link and asset path on the site is
+ * root-relative (`/assets/…`, `/privacy-policy/`); the site lives at the root
+ * of its own domain, so that is always right — preview with `npm run serve`.
+ *
+ * The old flat URLs keep working: GitHub Pages itself redirects `/support` to
+ * `/support/` (the URLs the app and the store listings use), and for the old
+ * `<name>.he.html` addresses the build writes a tiny redirect stub at the old
+ * file name (see `legacyFile`).
  *
  * Usage:
- *   node scripts/build.mjs           # write docs/*.html + docs/sitemap.xml
+ *   node scripts/build.mjs           # write the pages + redirect stubs + docs/sitemap.xml
  *   node scripts/build.mjs --check   # verify docs/ is up to date (exit 1 + list if not)
  */
-import { existsSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmdirSync, unlinkSync, writeFileSync } from 'node:fs';
 import { basename, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -171,19 +182,53 @@ function assertFullyRendered(html, where) {
 // The page list — templates × languages, plus the per-language documents
 // ---------------------------------------------------------------------------
 
-/** docs/ filename for a page name + language (the default language has no suffix). */
-const outputName = (name, lang) => (lang === DEFAULT_LANG ? `${name}.html` : `${name}.${lang}.html`);
+/**
+ * docs/ file (forward slashes) for a page name + language: an `index.html` in
+ * a directory per page and per non-default language, so the URL is the
+ * directory. The home page is the root itself; `404.html` must stay a root file.
+ */
+function outputFile(name, lang) {
+  if (name === '404') return '404.html';
+  const dir = [name === 'index' ? '' : name, lang === DEFAULT_LANG ? '' : lang].filter(Boolean).join('/');
+  return dir ? `${dir}/index.html` : 'index.html';
+}
+
+/** Public URL path of an output file: the directory, with its trailing slash. */
+function publicPath(fileName) {
+  if (fileName === '404.html') return '/404';
+  return `/${fileName.replace(/index\.html$/, '')}`;
+}
 
 /**
- * Public URL of an output file: `/` for the home page, extensionless for the
- * default language (GitHub Pages resolves `/support` to `support.html`), and the
- * full file name for the other languages — the URLs the legal site already had.
+ * The flat file name the page had before the clean URLs (`support.he.html`),
+ * where a redirect stub can safely keep it working — or null. Default-language
+ * pages get none: GitHub Pages serves `support.html` for `/support` in
+ * preference to redirecting into `support/`, so a stub there would shadow the
+ * real page on exactly the URLs the app and the store listings use. Those
+ * addresses keep working through GitHub's own `/support` → `/support/` redirect.
  */
-function publicPath(fileName) {
-  if (fileName === 'index.html') return '/';
-  if (/\.[a-z]{2}\.html$/.test(fileName)) return `/${fileName}`;
-  return `/${fileName.replace(/\.html$/, '')}`;
+function legacyFile(name, lang) {
+  if (name === '404' || lang === DEFAULT_LANG) return null;
+  return `${name}.${lang}.html`;
 }
+
+/** A stub that sends an old address to its new one: meta refresh for every client, JS to keep a #fragment, canonical for crawlers. */
+const redirectStub = (target) => `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Redirecting…</title>
+    <link rel="canonical" href="${target}" />
+    <meta http-equiv="refresh" content="0; url=${target}" />
+    <script>location.replace(${JSON.stringify(target)} + location.hash);</script>
+  </head>
+  <body>
+    <p>This page has moved to <a href="${target}">${target}</a>.</p>
+  </body>
+</html>
+`;
 
 function collectPages() {
   const pages = [];
@@ -219,22 +264,22 @@ function alternates(page, pages) {
     .filter((other) => other.name === page.name && other.lang !== page.lang)
     .map((other) => ({
       lang: other.lang,
-      href: outputName(other.name, other.lang),
+      href: publicPath(outputFile(other.name, other.lang)),
       label: strings[other.lang].chrome.languageName,
     }));
 }
 
 function renderPage(page, pages) {
-  const fileName = outputName(page.name, page.lang);
+  const fileName = outputFile(page.name, page.lang);
   const path = publicPath(fileName);
   const alternate = alternates(page, pages);
-  const defaultLangHref = page.lang === DEFAULT_LANG ? fileName : alternate.find((a) => a.lang === DEFAULT_LANG)?.href;
+  const defaultLangPath = page.lang === DEFAULT_LANG ? path : alternate.find((a) => a.lang === DEFAULT_LANG)?.href;
   // Cross-page links from this page: the same-language copy of the target when
   // one exists (a Hebrew page links to the Hebrew Terms), else the default one.
   const href = Object.fromEntries(
     [...new Set(pages.map((p) => p.name))].map((name) => [
       name,
-      outputName(name, pages.some((p) => p.name === name && p.lang === page.lang) ? page.lang : DEFAULT_LANG),
+      publicPath(outputFile(name, pages.some((p) => p.name === name && p.lang === page.lang) ? page.lang : DEFAULT_LANG)),
     ]),
   );
 
@@ -272,8 +317,8 @@ function renderPage(page, pages) {
       // hreflang: this page, each alternate, and x-default → the default-language copy.
       hreflang: [
         { lang: page.lang, href: site.url + path },
-        ...alternate.map((a) => ({ lang: a.lang, href: site.url + publicPath(a.href) })),
-        ...(defaultLangHref ? [{ lang: 'x-default', href: site.url + publicPath(defaultLangHref) }] : []),
+        ...alternate.map((a) => ({ lang: a.lang, href: site.url + a.href })),
+        ...(defaultLangPath ? [{ lang: 'x-default', href: site.url + defaultLangPath }] : []),
       ],
       appStoreReady: Boolean(site.appStoreUrl),
       playStoreReady: Boolean(site.playStoreUrl),
@@ -282,17 +327,31 @@ function renderPage(page, pages) {
 
   // Templates use the strings; documents are prose and are inserted verbatim.
   const content = page.templated ? render(page.body, context, page.source) : page.body;
-  let html = render(layout, { ...context, content }, `layout.html (for ${page.source})`);
+  const html = render(layout, { ...context, content }, `layout.html (for ${page.source})`);
   assertFullyRendered(html, page.source);
-  // GitHub Pages serves 404.html for ANY missing path, including nested ones,
-  // so this one page must reference its assets and links from the site root.
-  if (fileName === '404.html') html = html.replace(/(href|src)="(?!(?:[a-z]+:|#|\/))/g, '$1="/');
-  return { fileName, path, html };
+  return { fileName, path, html, legacy: legacyFile(page.name, page.lang) };
 }
 
 function renderSitemap(rendered) {
   const urls = rendered.map(({ path }) => `  <url><loc>${site.url}${path}</loc></url>`);
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join('\n')}\n</urlset>\n`;
+}
+
+/** Every file under docs/ (forward-slash paths relative to docs/), skipping the hand-managed assets/. */
+function listOutput(dir = '') {
+  return readdirSync(join(out, dir), { withFileTypes: true }).flatMap((entry) => {
+    const rel = dir ? `${dir}/${entry.name}` : entry.name;
+    if (entry.isDirectory()) return rel === 'assets' ? [] : listOutput(rel);
+    return [rel];
+  });
+}
+
+/** Remove a directory and its now-empty parents (up to docs/) once its last generated file is gone. */
+function pruneEmptyDirs(dir) {
+  while (dir && dir !== '.' && readdirSync(join(out, dir)).length === 0) {
+    rmdirSync(join(out, dir));
+    dir = dirname(dir);
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -310,17 +369,18 @@ const pages = collectPages();
 const rendered = pages.map((page) => renderPage(page, pages));
 const files = [
   ...rendered.map(({ fileName, html }) => ({ fileName, text: html })),
+  ...rendered.filter(({ legacy }) => legacy).map(({ legacy, path }) => ({ fileName: legacy, text: redirectStub(site.url + path) })),
   { fileName: 'sitemap.xml', text: renderSitemap(rendered.filter(({ fileName }) => fileName !== '404.html')) },
 ];
 
 const duplicates = files.map((f) => f.fileName).filter((name, i, all) => all.indexOf(name) !== i);
 if (duplicates.length) fail(`two sources render to the same file: ${[...new Set(duplicates)].join(', ')}`);
 
-// Every *.html (and the sitemap) at the root of docs/ is generated, so one that
-// no source produces any more is an orphan: a renamed page would otherwise stay
-// published with stale content.
+// Every *.html (and the sitemap) under docs/ outside assets/ is generated, so
+// one that no source produces any more is an orphan: a renamed page would
+// otherwise stay published with stale content.
 const generated = new Set(files.map((f) => f.fileName));
-const orphans = readdirSync(out).filter((f) => (f.endsWith('.html') || f === 'sitemap.xml') && !generated.has(f));
+const orphans = listOutput().filter((f) => (f.endsWith('.html') || f === 'sitemap.xml') && !generated.has(f));
 
 if (!site.appStoreUrl) console.warn('! site.appStoreUrl is not set — rendering the App Store button as "coming soon"');
 if (!site.playStoreUrl) console.warn('! site.playStoreUrl is not set — rendering the Google Play button as "coming soon"');
@@ -339,8 +399,14 @@ if (check) {
   }
   console.log(`✓ docs/ is up to date (${files.length} files)`);
 } else {
-  for (const { fileName, text } of files) writeFileSync(join(out, fileName), text, 'utf8');
-  for (const f of orphans) unlinkSync(join(out, f));
+  for (const { fileName, text } of files) {
+    mkdirSync(dirname(join(out, fileName)), { recursive: true });
+    writeFileSync(join(out, fileName), text, 'utf8');
+  }
+  for (const f of orphans) {
+    unlinkSync(join(out, f));
+    pruneEmptyDirs(dirname(f));
+  }
   console.log(`✓ Wrote ${files.length} files to docs/`);
   for (const { fileName } of files) console.log(`  ${fileName}`);
   for (const f of orphans) console.log(`  removed orphan ${f}`);
