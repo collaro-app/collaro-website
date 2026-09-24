@@ -117,7 +117,7 @@
       "f6Title": "Build your presence",
       "f6Text": "Collect ratings and reviews from completed bookings, showcase your gallery, and stand out with a Verified badge after an optional identity check (a PRO feature).",
       "noteTitle": "Free to start",
-      "noteText": "Every provider starts on the Free plan. Owners pay you directly — Collaro doesn't take a commission or add fees to your bookings. A PRO plan with higher limits and extra tools is available; contact us to learn more."
+      "noteText": "Every provider starts on the Free plan, and during our Early Access period every provider gets the PRO plan's features at no charge. Owners pay you directly — Collaro doesn't take a commission or add fees to your bookings."
     },
     "how": {
       "eyebrow": "How it works",
@@ -172,8 +172,8 @@
     "inAppTitle": "From inside the app",
     "inAppText": "Open the side menu and tap <strong>Contact us</strong> to send us a message from your account.",
     "deletionTitle": "Deleting your account or data",
-    "deletionText": "You can delete your account from inside the app: open the side menu → <strong>Settings</strong> → scroll to the bottom and tap <strong>Delete account</strong>. If you can no longer sign in, email us from the address registered to your account and we'll handle it for you.",
-    "deletionLinksIntro": "See what is removed and what we're required to retain:",
+    "deletionText": "You can delete (deactivate) your account from inside the app: open the side menu → <strong>Settings</strong> → scroll to the bottom and tap <strong>Delete account</strong>. Deleting the account in the app keeps its data so that you can restore it later. To have your personal information removed completely — or if you can no longer sign in — email us from the address registered to your account and we'll handle it for you.",
+    "deletionLinksIntro": "See what is removed and what we keep:",
     "accountDeletionLink": "Account deletion",
     "dataDeletionLink": "Deleting your data",
     "legalTitle": "Legal documents",
@@ -183,7 +183,7 @@
     "aboutTitle": "About",
     "aboutOperator": "Operator: Collaro, operated by Ofek Levi",
     "aboutContact": "Contact:",
-    "aboutPostal": "Postal address: Israel, Rosh HaAyin, Yorrm Hatuka 36",
+    "aboutPostal": "Postal address: Israel, Rosh HaAyin, Yoram Hatuka 36",
     "eyebrow": "We’re here to help"
   },
   "notFound": {
