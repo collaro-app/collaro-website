@@ -79,7 +79,7 @@
       "servicesTitle": "Publish and manage your services",
       "servicesAlt": "Store screenshot titled “Your services. Your way.” — the provider's My Services screen with Boarding, Grooming and Training, their starting prices and status, and icons for pricing, availability and dog capacity",
       "dashboardTitle": "Your business at a glance",
-      "dashboardAlt": "Store screenshot titled “Your business. At a glance.” — the provider dashboard with pending requests, upcoming bookings, average rating, earnings, active services and recent reviews"
+      "dashboardAlt": "Store screenshot titled “Your business. At a glance.” — the provider dashboard with pending requests, upcoming bookings, average rating, earnings, active and disabled services, a “Share your profile” card and recent reviews"
     },
     "owners": {
       "eyebrow": "For dog owners",
