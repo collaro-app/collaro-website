@@ -329,7 +329,10 @@ function renderPage(page, pages) {
   const content = page.templated ? render(page.body, context, page.source) : page.body;
   const html = render(layout, { ...context, content }, `layout.html (for ${page.source})`);
   assertFullyRendered(html, page.source);
-  return { fileName, path, html, legacy: legacyFile(page.name, page.lang) };
+  // A page that asks crawlers not to index it (the 404, the shared-profile landing
+  // page) has no business in the sitemap either.
+  const indexable = !/\bnoindex\b/.test(page.meta.robots ?? '');
+  return { fileName, path, html, legacy: legacyFile(page.name, page.lang), indexable };
 }
 
 function renderSitemap(rendered) {
@@ -370,7 +373,7 @@ const rendered = pages.map((page) => renderPage(page, pages));
 const files = [
   ...rendered.map(({ fileName, html }) => ({ fileName, text: html })),
   ...rendered.filter(({ legacy }) => legacy).map(({ legacy, path }) => ({ fileName: legacy, text: redirectStub(site.url + path) })),
-  { fileName: 'sitemap.xml', text: renderSitemap(rendered.filter(({ fileName }) => fileName !== '404.html')) },
+  { fileName: 'sitemap.xml', text: renderSitemap(rendered.filter(({ indexable }) => indexable)) },
 ];
 
 const duplicates = files.map((f) => f.fileName).filter((name, i, all) => all.indexOf(name) !== i);

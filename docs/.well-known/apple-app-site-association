@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["PFC396FM62.app.collaro.mobile"],
+        "components": [
+          {
+            "/": "/provider/*",
+            "comment": "A provider's shared profile link: /provider/?id=… and /provider/he/?id=… (the app's src/services/deepLinks.ts)"
+          }
+        ]
+      }
+    ]
+  }
+}

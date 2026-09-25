@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.collaro.mobile",
+      "sha256_cert_fingerprints": [
+        "AE:AE:D9:FC:EB:7E:38:5E:99:82:DA:08:42:7B:66:62:F1:8C:88:BC:17:42:9F:53:C4:DC:0C:0D:13:57:85:98"
+      ]
+    }
+  }
+]

@@ -5,6 +5,7 @@
  *  1. Mobile navigation toggle (accessible disclosure: aria-expanded, Escape closes).
  *  2. Header bottom border once the page is scrolled.
  *  3. Reveal-on-scroll for `.reveal` blocks (respects prefers-reduced-motion via CSS).
+ *  4. The language switch keeps the query string (a shared profile link's ?id=…).
  */
 (function () {
   "use strict";
@@ -84,5 +85,14 @@
     } else {
       revealAll();
     }
+  }
+
+  // 4. Language switch. The other-language copy of a page is the same page, so it
+  //    must keep the query — a shared profile link (/provider/?id=…) still has to
+  //    name its provider after switching to /provider/he/.
+  if (window.location.search) {
+    document.querySelectorAll(".site-nav__lang a").forEach(function (link) {
+      link.setAttribute("href", link.getAttribute("href") + window.location.search);
+    });
   }
 })();

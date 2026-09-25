@@ -1,0 +1,41 @@
+<!--page
+{ "strings": "providerLink", "title": "{{providerLink.meta.title}}", "description": "{{providerLink.meta.description}}", "robots": "noindex" }
+-->
+      <section class="page-hero page-hero--center" aria-labelledby="provider-title">
+        <div class="container container--narrow">
+          <img class="download__mark" src="/assets/img/logo/paw-tile.png" alt="" width="72" height="72" />
+          <h1 class="page-hero__title" id="provider-title">{{providerLink.title}}</h1>
+          <p class="page-hero__lead">{{providerLink.lead}}</p>
+          <div id="open-in-app" hidden>
+            <p class="btn-row">
+              <a class="btn btn--primary" href="collaro://provider">{{providerLink.openCta}}</a>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--download" aria-labelledby="provider-get-app-title">
+        <div class="container download">
+          <h2 class="section__title section__title--sm" id="provider-get-app-title">{{providerLink.getAppTitle}}</h2>
+          <p class="section__subtitle">{{providerLink.getAppText}}</p>
+          {{>store-buttons}}
+        </div>
+      </section>
+      <!--
+        A provider's shared profile link: /provider/?id=<24-hex provider id> (the
+        Hebrew copy at /provider/he/). With the app installed, the phone opens the
+        app before this page ever loads (Universal Links / App Links, vouched for
+        by /.well-known/). This button covers the cases where it didn't — the link
+        was opened in a browser, or the app was installed after the tap. A missing
+        or malformed id leaves it hidden; the page still offers the app.
+        The link format is owned by the app's src/services/deepLinks.ts.
+      -->
+      <script>
+        (function () {
+          var id = new URLSearchParams(location.search).get("id");
+          if (!id || !/^[0-9a-f]{24}$/i.test(id)) return;
+          var open = document.getElementById("open-in-app");
+          open.querySelector("a").href = "collaro://provider?id=" + id;
+          open.hidden = false;
+        })();
+      </script>

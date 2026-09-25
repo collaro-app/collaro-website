@@ -195,5 +195,16 @@
     "text": "The page you were looking for doesn't exist or has moved.",
     "cta": "Back to the homepage",
     "supportCta": "Contact support"
+  },
+  "providerLink": {
+    "meta": {
+      "title": "A provider's profile",
+      "description": "Open it in the Collaro app to see their services and reviews and book dog services."
+    },
+    "title": "Open this profile in the Collaro app",
+    "lead": "Someone shared a dog-services provider's profile with you. Collaro is a mobile app: open this link on your phone with Collaro installed and it goes straight to the profile.",
+    "openCta": "Open in the app",
+    "getAppTitle": "Don't have Collaro yet?",
+    "getAppText": "Download it for free and sign in, then tap the link again. It will open the profile right away."
   }
 }
