@@ -104,8 +104,9 @@ Providers share a link to their profile from the app. The link format is owned b
   (`PFC396FM62.app.collaro.mobile`).
 - **`docs/.well-known/assetlinks.json`** — the same for Android (App Links), verified at install.
   `sha256_cert_fingerprints` must hold the **app signing key** from Play Console (Test and release
-  → App integrity → App signing), which is what Play-installed apps are signed with, and may also
-  hold the EAS upload key (the one listed now) for builds installed outside Play.
+  → App integrity → App signing), which is what Play-installed apps are signed with — without it
+  Play Console reports "Domain ownership not verified". It lists that key first (`61:29:DD:…`),
+  then the EAS **upload key** (`AE:AE:D9:…`) for builds installed outside Play.
 
 Both are plain static files (`.nojekyll` keeps GitHub Pages from dropping the dot-directory).
 After deploying, check what the platforms actually see:
