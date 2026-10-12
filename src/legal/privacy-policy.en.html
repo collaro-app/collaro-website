@@ -1,8 +1,8 @@
 <!--page
-{"title":"Privacy Policy","description":"Privacy Policy of the Collaro app (version 1.0, last updated 11 October 2026)."}
+{"title":"Privacy Policy","description":"Privacy Policy of the Collaro app (version 1.0, last updated 13 October 2026)."}
 -->
 <h1>Privacy Policy</h1>
-<p class="updated">Last updated: 11 October 2026 · Version 1.0</p>
+<p class="updated">Last updated: 13 October 2026 · Version 1.0</p>
 <p class="intro">
   This Privacy Policy explains how Collaro (the “Platform”, “we”, “us” or
   “our”), operated by Ofek Levi, collects, uses, stores, shares and protects
@@ -92,9 +92,9 @@
       offer your services as a business or as a private individual, a phone
       number, a postal address (street, city and country), a precise map
       location (geographic coordinates) for your service point and the time zone
-      derived from it, a written biography, and an optional image gallery. For
-      each service you offer, we also store its type, description, capacity,
-      availability schedule and prices.
+      and general area (region) derived from it, a written biography, and an
+      optional image gallery. For each service you offer, we also store its
+      type, description, capacity, availability schedule and prices.
     </li>
     <li>
       Dog information (Owners): for each dog you add — its name, breed, age,
@@ -181,8 +181,10 @@
       reviews and ratings to the relevant users;
     </li>
     <li>
-      show Providers on the map, calculate their distance from the map’s centre,
-      and let Owners search for and filter Providers;
+      show Providers on the map and in the public list of Providers, calculate
+      their distance from the map’s centre, determine each Provider’s general
+      area from their service location, and let Owners and visitors who are not
+      signed in search for and filter Providers, including by area;
     </li>
     <li>
       enable the booking workflow, including requests, acceptance or rejection,
@@ -321,12 +323,14 @@
       Public Provider information: once a Provider is listed, their display name
       (or, if none is set, their account name), profile photo, whether they are
       a business or a private provider, biography, gallery images, services with
-      their prices, schedules and remaining availability, time zone, average
-      rating and reviews, number of completed bookings and verification status —
-      and also their phone number, full street address and exact map location
-      (shown on the map as a pin, together with a distance from the centre of
-      the map being viewed) — are publicly accessible, including to people who
-      do not have an account (for example through our public interfaces).
+      their prices, schedules and remaining availability, time zone, general
+      area (region, derived from their service location), average rating and
+      reviews, number of completed bookings and verification status — and also
+      their phone number, full street address and exact map location (shown on
+      the map as a pin, together with a distance from the centre of the map
+      being viewed) — are publicly accessible, including to people who do not
+      have an account (for example in the app’s public list of Providers, which
+      can be browsed without signing in, and through our public interfaces).
       Providers should bear this in mind when choosing the address and location
       pin they publish.
     </li>
@@ -534,12 +538,14 @@
     <li>
       Providers: the service location you set is stored as part of your profile
       at the precision you choose, is shown publicly as a map pin and used to
-      calculate distances, and is used to determine the time zone in which your
-      services are scheduled and your bookings’ dates and times are shown. We do
-      not blur or approximate it, so choose your pin accordingly. If you choose
-      to use your device’s current location when setting your service address,
-      that location is sent via our servers to our geocoding provider to look up
-      the matching address.
+      calculate distances, is used to determine the time zone in which your
+      services are scheduled and your bookings’ dates and times are shown, and
+      is also used to determine your general area (region), which is shown
+      publicly in Provider listings and on your profile and can be used to
+      filter search results. We do not blur or approximate it, so choose your
+      pin accordingly. If you choose to use your device’s current location when
+      setting your service address, that location is sent via our servers to our
+      geocoding provider to look up the matching address.
     </li>
     <li>
       Owners: the map is the Owner home screen. When it opens, the app asks for
@@ -551,11 +557,17 @@
       not stored on our servers. If you decline the location permission, the map
       simply opens at a default area.
     </li>
+    <li>
+      Visitors who are not signed in: until you first sign in on a device, the
+      app opens on a public list of Providers that you can browse and filter,
+      including by area. This list does not ask for permission to use your
+      location and does not access your device’s location.
+    </li>
   </ul>
   <p>
     We do not track your location in the background, build a location history,
-    or use your location for any purpose other than the map, search, distance
-    and time-zone features described above.
+    or use your location for any purpose other than the map, search, distance,
+    time-zone and area features described above.
   </p>
 </section>
 <section>
@@ -572,13 +584,15 @@
   <p>
     We also store, in ordinary on-device storage, a per-installation device
     identifier, your preferences (such as language and display theme), your
-    device’s push token and a few display settings (for example, whether you
-    have dismissed a notice). The device identifier is generated on your device,
-    is used to keep one active session per device, and is not a hardware
-    identifier or advertising identifier. Signing out and clearing the app’s
-    storage removes this locally stored information from your device; files you
-    choose to export or save (such as an invoice) remain where you saved them
-    until you delete them.
+    device’s push token, whether anyone has signed in to the app on this device
+    (so that it then opens on the sign-in screen rather than the public list of
+    Providers) and a few display settings (for example, whether you have
+    dismissed a notice). The device identifier is generated on your device, is
+    used to keep one active session per device, and is not a hardware identifier
+    or advertising identifier. Signing out and clearing the app’s storage
+    removes this locally stored information from your device; files you choose
+    to export or save (such as an invoice) remain where you saved them until you
+    delete them.
   </p>
 </section>
 <section>
