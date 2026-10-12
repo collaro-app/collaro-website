@@ -31,6 +31,7 @@
       "dataDeletion": "Deleting your data",
       "terms": "Terms of Service",
       "privacy": "Privacy Policy",
+      "mapData": "Map data",
       "copyright": "© Collaro. All rights reserved.",
       "platforms": "Collaro is a mobile app for iOS and Android, available in English and Hebrew."
     }
@@ -115,9 +116,9 @@
       "f5Title": "Chat with dog owners",
       "f5Text": "Once you accept a booking, message the owner directly in the app.",
       "f6Title": "Build your presence",
-      "f6Text": "Collect ratings and reviews from completed bookings, showcase your gallery, and stand out with a Verified badge after an optional identity check (a PRO feature).",
-      "noteTitle": "Free to start",
-      "noteText": "Every provider starts on the Free plan, and during our Early Access period every provider gets the PRO plan's features at no charge. Owners pay you directly — Collaro doesn't take a commission or add fees to your bookings."
+      "f6Text": "Collect ratings and reviews from completed bookings, showcase your gallery, and stand out with a Verified badge after an optional identity check.",
+      "noteTitle": "Free for providers",
+      "noteText": "Collaro is free for providers. Owners pay you directly — Collaro doesn't take a commission or add fees to your bookings."
     },
     "how": {
       "eyebrow": "How it works",
@@ -165,14 +166,14 @@
     "emailCta": "Email support",
     "responseNote": "We read every message and get back to you as soon as we can.",
     "includeTitle": "To help us answer faster, please include:",
-    "include1": "The email address of your Collaro account",
+    "include1": "The email address of your Collaro account (for Hide My Email, the relay address shown in your Apple ID settings)",
     "include2": "Whether you're a dog owner or a service provider",
     "include3": "A short description of the issue (and a screenshot, if you have one)",
     "languages": "You can write to us in English or Hebrew.",
     "inAppTitle": "From inside the app",
     "inAppText": "Open the side menu and tap <strong>Contact us</strong> to send us a message from your account.",
     "deletionTitle": "Deleting your account or data",
-    "deletionText": "You can delete (deactivate) your account from inside the app: open the side menu → <strong>Settings</strong> → scroll to the bottom and tap <strong>Delete account</strong>. Deleting the account in the app keeps its data so that you can restore it later. To have your personal information removed completely — or if you can no longer sign in — email us from the address registered to your account and we'll handle it for you.",
+    "deletionText": "You can delete (deactivate) your account from inside the app: open the side menu → <strong>Settings</strong> → scroll to the bottom and tap <strong>Delete account</strong>. Deleting the account in the app keeps its data so that you can restore it later. To have your personal information removed completely — or if you can no longer sign in — email us from the address registered to your account and we'll handle it for you. If you signed in with Apple using Hide My Email, the address on your Collaro account is the private relay address Apple created for you, not your personal address. Contact us through <strong>Contact us</strong> in the app, or tell us the relay address shown in your Apple ID settings, so that we can identify your account.",
     "deletionLinksIntro": "See what is removed and what we keep:",
     "accountDeletionLink": "Account deletion",
     "dataDeletionLink": "Deleting your data",

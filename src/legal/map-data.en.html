@@ -1,0 +1,57 @@
+<!--page
+{"title":"Map Data","description":"Where the map data in Collaro comes from: OpenStreetMap, available under the Open Database License (ODbL), and how Collaro uses its dog-park data."}
+-->
+<h1>Map Data</h1>
+<p class="updated">Last updated: 5 October 2026</p>
+<p class="intro">
+  The maps in Collaro, and the dog parks shown on them, are based on data
+  from OpenStreetMap. This page explains where that data comes from, the
+  licence it is available under, and how Collaro uses it.
+</p>
+
+<section>
+  <h2>1. OpenStreetMap and the Open Database License</h2>
+  <p>
+    Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.
+    OpenStreetMap data is available under the
+    <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License (ODbL) 1.0</a>;
+    the <a href="https://www.openstreetmap.org/copyright">OpenStreetMap copyright and licence page</a>
+    sets out its terms. The map imagery is © CARTO, drawn from OpenStreetMap
+    data.
+  </p>
+  <p>
+    Nothing in our <a href="/terms-of-service/">Terms of Service</a> limits
+    the rights the ODbL gives you in this data.
+  </p>
+</section>
+<section>
+  <h2>2. The Dog-Park Data in the App</h2>
+  <p>
+    The dog parks shown on the map are the OpenStreetMap features tagged
+    <code>leisure=dog_park</code> in the area Collaro serves. About once a
+    day our servers download them from the Overpass API (a service for
+    querying OpenStreetMap data) and keep a copy, and the app shows the
+    parks from that copy. The app does not contact OpenStreetMap or the
+    Overpass API to show dog parks.
+  </p>
+  <p>
+    For each park our copy keeps only its OpenStreetMap identifier, its name
+    (where it has one) and a single point: the park’s position, or for a
+    park mapped as an area, the centre point that the Overpass API
+    calculates. Names have control characters and extra spaces removed and
+    are shortened to at most 120 characters. Nothing else is changed, and no
+    data from other sources is added. The query we use is:
+  </p>
+  <pre><code>[out:json][timeout:60][maxsize:33554432];
+nwr["leisure"="dog_park"](29.45,34.2,33.35,35.9);
+out tags center qt;</code></pre>
+</section>
+<section>
+  <h2>3. Getting the Data</h2>
+  <p>
+    The same data is available free of charge from OpenStreetMap — for
+    example by running the query above on the Overpass API. Our copy of the
+    dog-park data is available under the ODbL; to receive it, contact us at
+    contact@collaro.app.
+  </p>
+</section>

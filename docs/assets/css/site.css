@@ -1394,6 +1394,28 @@ a.store-btn:hover {
   margin: 0 0 var(--sp-2);
 }
 
+/* Code (the Map Data page's query and tag): always left-to-right, isolated from the
+   surrounding text so a Hebrew page doesn't reorder it, and a block scrolls sideways
+   instead of widening the page on a phone. */
+.document code {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.9em;
+}
+
+.document pre {
+  direction: ltr;
+  text-align: left;
+  overflow-x: auto;
+  margin: 0 0 var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  line-height: 1.5;
+}
+
 .document section {
   scroll-margin-top: calc(var(--header-h) + var(--sp-4));
 }

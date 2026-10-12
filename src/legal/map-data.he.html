@@ -1,0 +1,54 @@
+<!--page
+{"title":"נתוני מפה","description":"מאין מגיעים נתוני המפה ב-Collaro: OpenStreetMap, הזמינים לפי רישיון מסד הנתונים הפתוח (ODbL), וכיצד Collaro משתמשת בנתוני גינות הכלבים."}
+-->
+<h1>נתוני מפה</h1>
+<p class="updated">עודכן לאחרונה: 5 October 2026</p>
+<p class="intro">
+  המפות ב-Collaro, וגינות הכלבים המוצגות בהן, מבוססות על נתונים
+  מ-OpenStreetMap. עמוד זה מסביר מאין מגיעים הנתונים, לפי איזה רישיון הם
+  זמינים, וכיצד Collaro משתמשת בהם.
+</p>
+
+<section>
+  <h2>1. OpenStreetMap ורישיון מסד הנתונים הפתוח</h2>
+  <p>
+    נתוני המפה © <a href="https://www.openstreetmap.org/copyright">תורמי OpenStreetMap</a>.
+    נתוני OpenStreetMap זמינים לפי
+    <a href="https://opendatacommons.org/licenses/odbl/1-0/">רישיון מסד הנתונים הפתוח (ODbL) 1.0</a>;
+    <a href="https://www.openstreetmap.org/copyright">דף זכויות היוצרים והרישיון של OpenStreetMap</a>
+    מפרט את תנאיו. תמונות המפה הן © CARTO, ומשורטטות מנתוני OpenStreetMap.
+  </p>
+  <p>
+    דבר ב<a href="/terms-of-service/he/">תנאי השימוש</a> שלנו אינו מגביל את
+    הזכויות ש-ODbL מעניק לכם בנתונים אלה.
+  </p>
+</section>
+<section>
+  <h2>2. נתוני גינות הכלבים באפליקציה</h2>
+  <p>
+    גינות הכלבים המוצגות במפה הן הפריטים ב-OpenStreetMap המתויגים
+    <code>leisure=dog_park</code> באזור ש-Collaro משרתת. בערך פעם ביום
+    השרתים שלנו מורידים אותם מ-Overpass API (שירות לשאילתות על נתוני
+    OpenStreetMap) ושומרים עותק, והאפליקציה מציגה את הגינות מתוך העותק הזה.
+    כדי להציג גינות כלבים, האפליקציה אינה פונה ל-OpenStreetMap או
+    ל-Overpass API.
+  </p>
+  <p>
+    לכל גינה העותק שלנו שומר רק את המזהה שלה ב-OpenStreetMap, את שמה (אם יש
+    לה שם) ונקודה אחת: מיקום הגינה, או, עבור גינה שמופתה כשטח, נקודת המרכז
+    ש-Overpass API מחשב. משמות מוסרים תווי בקרה ורווחים מיותרים, והם מקוצרים
+    ל-120 תווים לכל היותר. דבר אחר אינו משתנה, ולא נוספים נתונים ממקורות
+    אחרים. השאילתה שבה אנו משתמשים:
+  </p>
+  <pre><code>[out:json][timeout:60][maxsize:33554432];
+nwr["leisure"="dog_park"](29.45,34.2,33.35,35.9);
+out tags center qt;</code></pre>
+</section>
+<section>
+  <h2>3. קבלת הנתונים</h2>
+  <p>
+    אותם נתונים זמינים ללא תשלום מ-OpenStreetMap — למשל באמצעות הרצת
+    השאילתה שלעיל ב-Overpass API. העותק שלנו של נתוני גינות הכלבים זמין לפי
+    ODbL; כדי לקבל אותו, פנו אלינו בכתובת contact@collaro.app.
+  </p>
+</section>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Map Data · Collaro</title>
+    <meta name="description" content="Where the map data in Collaro comes from: OpenStreetMap, available under the Open Database License (ODbL), and how Collaro uses its dog-park data." />
+    <link rel="canonical" href="https://collaro.app/map-data/" />
+    <link rel="alternate" hreflang="en" href="https://collaro.app/map-data/" />
+    <link rel="alternate" hreflang="he" href="https://collaro.app/map-data/he/" />
+    <link rel="alternate" hreflang="x-default" href="https://collaro.app/map-data/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Collaro" />
+    <meta property="og:title" content="Map Data · Collaro" />
+    <meta property="og:description" content="Where the map data in Collaro comes from: OpenStreetMap, available under the Open Database License (ODbL), and how Collaro uses its dog-park data." />
+    <meta property="og:url" content="https://collaro.app/map-data/" />
+    <meta property="og:image" content="https://collaro.app/assets/img/og/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="587" />
+    <meta property="og:image:alt" content="Your dog’s care, all around you — a smiling golden retriever beside the Collaro paw logo" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#2F6FED" />
+    <link rel="icon" href="/assets/img/icons/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="icon" href="/assets/img/icons/favicon-192.png" sizes="192x192" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/img/icons/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/assets/css/site.css" />
+    <script>document.documentElement.classList.add("js");</script>
+  </head>
+  <body class="page-document">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" id="top">
+      <div class="container site-header__inner">
+        <a class="brand" href="/" aria-label="Collaro — home">
+          <img class="brand__mark" src="/assets/img/logo/paw-tile.png" alt="" width="36" height="36" />
+          <span class="brand__name">Collaro</span>
+        </a>
+
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Menu"
+        >
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Primary">
+          <ul class="site-nav__list">
+            <li><a href="/#owners">For owners</a></li>
+            <li><a href="/#providers">For providers</a></li>
+            <li><a href="/#how-it-works">How it works</a></li>
+            <li><a href="/support/">Support</a></li>
+            <li class="site-nav__lang"><a href="/map-data/he/" lang="he" hreflang="he">עברית</a></li>
+
+            <li class="site-nav__cta"><a class="btn btn--primary btn--sm" href="/#download">Get the app</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+
+      <div class="container container--narrow">
+        <article class="document">
+<h1>Map Data</h1>
+<p class="updated">Last updated: 5 October 2026</p>
+<p class="intro">
+  The maps in Collaro, and the dog parks shown on them, are based on data
+  from OpenStreetMap. This page explains where that data comes from, the
+  licence it is available under, and how Collaro uses it.
+</p>
+
+<section>
+  <h2>1. OpenStreetMap and the Open Database License</h2>
+  <p>
+    Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>.
+    OpenStreetMap data is available under the
+    <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License (ODbL) 1.0</a>;
+    the <a href="https://www.openstreetmap.org/copyright">OpenStreetMap copyright and licence page</a>
+    sets out its terms. The map imagery is © CARTO, drawn from OpenStreetMap
+    data.
+  </p>
+  <p>
+    Nothing in our <a href="/terms-of-service/">Terms of Service</a> limits
+    the rights the ODbL gives you in this data.
+  </p>
+</section>
+<section>
+  <h2>2. The Dog-Park Data in the App</h2>
+  <p>
+    The dog parks shown on the map are the OpenStreetMap features tagged
+    <code>leisure=dog_park</code> in the area Collaro serves. About once a
+    day our servers download them from the Overpass API (a service for
+    querying OpenStreetMap data) and keep a copy, and the app shows the
+    parks from that copy. The app does not contact OpenStreetMap or the
+    Overpass API to show dog parks.
+  </p>
+  <p>
+    For each park our copy keeps only its OpenStreetMap identifier, its name
+    (where it has one) and a single point: the park’s position, or for a
+    park mapped as an area, the centre point that the Overpass API
+    calculates. Names have control characters and extra spaces removed and
+    are shortened to at most 120 characters. Nothing else is changed, and no
+    data from other sources is added. The query we use is:
+  </p>
+  <pre><code>[out:json][timeout:60][maxsize:33554432];
+nwr["leisure"="dog_park"](29.45,34.2,33.35,35.9);
+out tags center qt;</code></pre>
+</section>
+<section>
+  <h2>3. Getting the Data</h2>
+  <p>
+    The same data is available free of charge from OpenStreetMap — for
+    example by running the query above on the Overpass API. Our copy of the
+    dog-park data is available under the ODbL; to receive it, contact us at
+    contact@collaro.app.
+  </p>
+</section>
+
+        </article>
+      </div>
+
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div class="site-footer__brand">
+          <a class="brand" href="/" aria-label="Collaro — home">
+            <img class="brand__mark" src="/assets/img/logo/paw-tile.png" alt="" width="36" height="36" />
+            <span class="brand__name">Collaro</span>
+          </a>
+          <p class="site-footer__tagline">The perfect care for your dog.</p>
+          <p class="site-footer__contact">
+            <a href="mailto:contact@collaro.app">contact@collaro.app</a>
+          </p>
+        </div>
+
+        <nav class="site-footer__col" aria-labelledby="footer-product">
+          <h2 class="site-footer__heading" id="footer-product">Product</h2>
+          <ul>
+            <li><a href="/#owners">For owners</a></li>
+            <li><a href="/#providers">For providers</a></li>
+            <li><a href="/#how-it-works">How it works</a></li>
+            <li><a href="/#download">Get the app</a></li>
+          </ul>
+        </nav>
+
+        <nav class="site-footer__col" aria-labelledby="footer-support">
+          <h2 class="site-footer__heading" id="footer-support">Support</h2>
+          <ul>
+            <li><a href="/support/">Contact & support</a></li>
+            <li><a href="/account-deletion/">Account deletion</a></li>
+            <li><a href="/data-deletion/">Deleting your data</a></li>
+          </ul>
+        </nav>
+
+        <nav class="site-footer__col" aria-labelledby="footer-legal">
+          <h2 class="site-footer__heading" id="footer-legal">Legal</h2>
+          <ul>
+            <li><a href="/terms-of-service/">Terms of Service</a></li>
+            <li><a href="/privacy-policy/">Privacy Policy</a></li>
+            <li><a href="/map-data/">Map data</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="container site-footer__bottom">
+        <p>© Collaro. All rights reserved.</p>
+        <p>Collaro is a mobile app for iOS and Android, available in English and Hebrew.</p>
+      </div>
+    </footer>
+
+    <script src="/assets/js/site.js" defer></script>
+  </body>
+</html>
