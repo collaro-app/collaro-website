@@ -63,6 +63,7 @@
 
         <nav class="site-nav" id="site-nav" aria-label="{{chrome.primaryNavLabel}}">
           <ul class="site-nav__list">
+            <li><a href="{{page.href.providers}}"{{#if page.nav.findProvider}} aria-current="page"{{/if}}>{{chrome.nav.findProvider}}</a></li>
             <li><a href="{{page.href.index}}#owners"{{#if page.nav.owners}} aria-current="page"{{/if}}>{{chrome.nav.owners}}</a></li>
             <li><a href="{{page.href.index}}#providers"{{#if page.nav.providers}} aria-current="page"{{/if}}>{{chrome.nav.providers}}</a></li>
             <li><a href="{{page.href.index}}#how-it-works">{{chrome.nav.howItWorks}}</a></li>
@@ -104,6 +105,7 @@
         <nav class="site-footer__col" aria-labelledby="footer-product">
           <h2 class="site-footer__heading" id="footer-product">{{chrome.footer.product}}</h2>
           <ul>
+            <li><a href="{{page.href.providers}}">{{chrome.nav.findProvider}}</a></li>
             <li><a href="{{page.href.index}}#owners">{{chrome.nav.owners}}</a></li>
             <li><a href="{{page.href.index}}#providers">{{chrome.nav.providers}}</a></li>
             <li><a href="{{page.href.index}}#how-it-works">{{chrome.nav.howItWorks}}</a></li>

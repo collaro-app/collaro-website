@@ -1,0 +1,249 @@
+<!--page
+{ "strings": "providers", "title": "{{providers.meta.title}}", "description": "{{providers.meta.description}}", "nav": "findProvider" }
+-->
+      <!--
+        The marketplace's providers as photo cards, narrowed by area and the same
+        filters as the app — the web twin of the app's public guest list
+        (frontend/src/pages/shared/components/ProviderListBrowser in the app repo).
+        /assets/js/providers.js reads the public search (GET <api>/api/v1/providers;
+        the API grants this site's origin a CORS read of that one route) and fills
+        the list from the templates at the bottom. Without JavaScript the controls
+        stay hidden and the page offers the app instead.
+      -->
+      <section
+        class="plist"
+        id="provider-list"
+        aria-labelledby="plist-title"
+        data-api="{{site.apiUrl}}"
+        data-profile-href="{{page.href.provider}}"
+      >
+        <div class="plist__bubbles" aria-hidden="true">
+          <span class="plist__bubble plist__bubble--1"></span>
+          <span class="plist__bubble plist__bubble--2"></span>
+          <span class="plist__bubble plist__bubble--3"></span>
+          <span class="plist__bubble plist__bubble--4"></span>
+          <span class="plist__bubble plist__bubble--5"></span>
+        </div>
+
+        <div class="container plist__inner">
+          <header class="plist__intro">
+            <div class="plist__marks" aria-hidden="true">
+              <span class="plist__mark plist__mark--1">{{icon:tennis-ball}}</span>
+              <span class="plist__mark plist__mark--2">{{icon:heart}}</span>
+              <span class="plist__mark plist__mark--3">{{icon:bone}}</span>
+              <span class="plist__mark plist__mark--4">{{icon:paw-solid}}</span>
+              <span class="plist__mark plist__mark--5">{{icon:paw-solid}}</span>
+              <span class="plist__mark plist__mark--6">{{icon:bone}}</span>
+              <span class="plist__mark plist__mark--7">{{icon:paw-solid}}</span>
+            </div>
+            <div class="plist__title-row">
+              <h1 class="plist__title" id="plist-title">{{providers.title}}</h1>
+              <span class="plist__dog" aria-hidden="true">{{icon:dog-side}}</span>
+            </div>
+            <p class="plist__subtitle">{{providers.subtitle}}</p>
+          </header>
+
+          <div class="plist__controls">
+            <div class="chip-row" role="group" aria-label="{{providers.areasLabel}}">
+              <button type="button" class="chip" data-quick-area="" aria-pressed="true">{{providers.allAreas}}</button>
+{{#each providers.areaList}}              <button type="button" class="chip" data-quick-area="{{this.key}}" aria-pressed="false">{{this.label}}</button>
+{{/each}}            </div>
+
+            <div class="plist__toolbar">
+              <p class="plist__count" id="plist-count" aria-live="polite"></p>
+              <button
+                type="button"
+                class="filter-btn"
+                id="plist-filters-open"
+                aria-haspopup="dialog"
+                aria-controls="plist-filters"
+                aria-label="{{providers.filters.open}}"
+              >
+                {{icon:funnel}}
+                <span class="filter-btn__badge" aria-hidden="true" hidden></span>
+              </button>
+            </div>
+          </div>
+
+          <div class="plist__status" id="plist-status"></div>
+          <ul class="plist__grid" id="plist-grid" role="list"></ul>
+
+          <noscript>
+            <p class="plist__noscript">{{providers.noscript}}</p>
+          </noscript>
+        </div>
+      </section>
+
+      <section class="section section--download" aria-labelledby="plist-get-app-title">
+        <div class="container download">
+          <img class="download__mark" src="/assets/img/logo/paw-tile.png" alt="" width="72" height="72" />
+          <h2 class="section__title section__title--sm" id="plist-get-app-title">{{providers.getAppTitle}}</h2>
+          <p class="section__subtitle">{{providers.getAppText}}</p>
+          {{>store-buttons}}
+        </div>
+      </section>
+
+      <dialog class="filter-sheet" id="plist-filters" aria-labelledby="plist-filters-title">
+        <div class="filter-sheet__panel">
+          <div class="filter-sheet__header">
+            <h2 class="filter-sheet__title" id="plist-filters-title">{{providers.filters.title}}</h2>
+            <button type="button" class="filter-sheet__clear" data-clear-filters hidden>{{providers.filters.clearAll}}</button>
+            <button type="button" class="filter-sheet__close" data-close-filters aria-label="{{providers.filters.close}}">{{icon:close}}</button>
+          </div>
+
+          <div class="filter-sheet__body">
+            <h3 class="filter-sheet__section">{{providers.filters.area}}</h3>
+            <div class="chip-wrap" role="group" aria-label="{{providers.filters.area}}">
+{{#each providers.areaList}}              <button type="button" class="chip" data-filter="areas" data-value="{{this.key}}" aria-pressed="false">{{this.label}}</button>
+{{/each}}            </div>
+
+            <h3 class="filter-sheet__section">{{providers.filters.serviceType}}</h3>
+            <div class="chip-wrap" role="group" aria-label="{{providers.filters.serviceType}}">
+{{#each providers.filters.serviceTypes}}              <button type="button" class="chip" data-filter="serviceTypes" data-value="{{this.key}}" aria-pressed="false">{{this.label}}</button>
+{{/each}}            </div>
+
+            <h3 class="filter-sheet__section">{{providers.filters.providerType}}</h3>
+            <div class="chip-wrap" role="group" aria-label="{{providers.filters.providerType}}">
+{{#each providers.filters.providerTypes}}              <button type="button" class="chip" data-filter="providerTypes" data-value="{{this.key}}" aria-pressed="false">
+                <img class="chip__icon chip__icon--off" src="/assets/img/providers/{{this.key}}-blue.png" alt="" width="14" height="14" />
+                <img class="chip__icon chip__icon--on" src="/assets/img/providers/{{this.key}}-white.png" alt="" width="14" height="14" />
+                {{this.label}}
+              </button>
+{{/each}}            </div>
+
+            <h3 class="filter-sheet__section">{{providers.filters.minRating}}</h3>
+            <div class="chip-wrap" role="group" aria-label="{{providers.filters.minRating}}">
+              <button type="button" class="chip" data-filter="minRating" data-value="" aria-pressed="true">{{providers.filters.any}}</button>
+              <button type="button" class="chip" data-filter="minRating" data-value="4" aria-pressed="false">4.0+</button>
+              <button type="button" class="chip" data-filter="minRating" data-value="4.5" aria-pressed="false">4.5+</button>
+              <button type="button" class="chip" data-filter="minRating" data-value="5" aria-pressed="false">5.0</button>
+            </div>
+
+            <h3 class="filter-sheet__section">{{providers.filters.minCompletedBookings}}</h3>
+            <div class="chip-wrap" role="group" aria-label="{{providers.filters.minCompletedBookings}}">
+              <button type="button" class="chip" data-filter="minCompletedBookings" data-value="" aria-pressed="true">{{providers.filters.any}}</button>
+              <button type="button" class="chip" data-filter="minCompletedBookings" data-value="10" aria-pressed="false">10+</button>
+              <button type="button" class="chip" data-filter="minCompletedBookings" data-value="25" aria-pressed="false">25+</button>
+              <button type="button" class="chip" data-filter="minCompletedBookings" data-value="50" aria-pressed="false">50+</button>
+              <button type="button" class="chip" data-filter="minCompletedBookings" data-value="100" aria-pressed="false">100+</button>
+            </div>
+
+            <div class="filter-sheet__toggle">
+              <span class="filter-sheet__toggle-text">
+                <label class="filter-sheet__toggle-label" for="plist-verified">{{providers.filters.verifiedOnly}}</label>
+                <span class="filter-sheet__toggle-hint" id="plist-verified-hint">{{providers.filters.verifiedOnlyHint}}</span>
+              </span>
+              <span class="switch">
+                <input type="checkbox" class="switch__input" id="plist-verified" role="switch" data-filter="verifiedOnly" aria-describedby="plist-verified-hint" />
+                <span class="switch__track" aria-hidden="true"></span>
+              </span>
+            </div>
+          </div>
+
+          <div class="filter-sheet__footer">
+            <button type="button" class="btn btn--primary filter-sheet__apply" data-close-filters>{{providers.filters.apply}}</button>
+          </div>
+        </div>
+      </dialog>
+
+      <!-- One provider card, cloned per result by providers.js. -->
+      <template id="plist-card">
+        <li class="pcard">
+          <div class="pcard__photo">
+            <div class="pcard__placeholder" aria-hidden="true">
+              <img src="/assets/img/logo/paw-blue.png" alt="" width="30" height="30" />
+              <img src="/assets/img/logo/paw-blue.png" alt="" width="30" height="30" />
+              <img src="/assets/img/logo/paw-blue.png" alt="" width="30" height="30" />
+              <img src="/assets/img/logo/paw-blue.png" alt="" width="30" height="30" />
+              <img src="/assets/img/logo/paw-blue.png" alt="" width="30" height="30" />
+              <img src="/assets/img/logo/paw-blue.png" alt="" width="30" height="30" />
+            </div>
+            <div class="pcard__track" hidden></div>
+            <div class="pcard__dots" aria-hidden="true" hidden></div>
+            <button type="button" class="pcard__nav pcard__nav--prev" tabindex="-1" aria-hidden="true" hidden>{{icon:chevron-forward}}</button>
+            <button type="button" class="pcard__nav pcard__nav--next" tabindex="-1" aria-hidden="true" hidden>{{icon:chevron-forward}}</button>
+            <span class="pcard__price">
+              <span class="pcard__price-glyphs" aria-hidden="true"><span>$</span><span>$</span><span>$</span></span>
+              <span class="visually-hidden" data-slot="price"></span>
+            </span>
+          </div>
+          <div class="pcard__body">
+            <div class="pcard__identity">
+              <span class="pcard__avatar" aria-hidden="true"></span>
+              <div class="pcard__identity-text">
+                <h2 class="pcard__name"><a class="pcard__link" data-slot="link"></a></h2>
+                <div class="pcard__pills">
+                  <span class="badge badge--type" data-slot="type" hidden>
+                    <img src="" alt="" width="14" height="14" />
+                    <span></span>
+                  </span>
+                  <span class="badge badge--verified" data-slot="verified" hidden>
+                    {{icon:shield-checkmark}}
+                    <span>{{providers.card.verified}}</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="pcard__meta">
+              <span class="pcard__rating">
+                <span class="pcard__stars" aria-hidden="true"></span>
+                <span class="pcard__rating-value" aria-hidden="true"></span>
+                <span class="visually-hidden" data-slot="rating"></span>
+              </span>
+              <span class="pcard__meta-item" data-slot="area" hidden>{{icon:location-outline}}<span></span></span>
+              <span class="pcard__meta-item pcard__meta-item--done" data-slot="completed" hidden>{{icon:checkmark-circle}}<span></span></span>
+            </div>
+          </div>
+        </li>
+      </template>
+
+      <!-- The states shown in place of the cards (loading, error, empty). -->
+      <template id="plist-states">
+        <div class="plist-state" data-state="loading">
+          <span class="spinner" aria-hidden="true"></span>
+          <p class="plist-state__caption">{{providers.loading}}</p>
+        </div>
+        <div class="plist-state" data-state="updating">
+          <span class="spinner spinner--sm" aria-hidden="true"></span>
+          <span class="visually-hidden">{{providers.loading}}</span>
+        </div>
+        <div class="plist-state" data-state="error">
+          <span class="plist-state__icon plist-state__icon--muted">{{icon:cloud-offline}}</span>
+          <p class="plist-state__text">{{providers.error}}</p>
+          <button type="button" class="btn btn--secondary" data-retry>{{providers.retry}}</button>
+        </div>
+        <div class="plist-state" data-state="empty">
+          <span class="plist-state__badge">{{icon:paw-outline}}</span>
+          <h2 class="plist-state__title">{{providers.emptyTitle}}</h2>
+          <p class="plist-state__caption">{{providers.emptySubtitle}}</p>
+        </div>
+        <div class="plist-state" data-state="empty-filtered">
+          <span class="plist-state__badge">{{icon:search-outline}}</span>
+          <h2 class="plist-state__title">{{providers.emptyFilteredTitle}}</h2>
+          <p class="plist-state__caption">{{providers.emptyFilteredSubtitle}}</p>
+          <button type="button" class="btn btn--primary" data-clear-filters>{{providers.filters.clearAll}}</button>
+        </div>
+      </template>
+
+      <!-- Copy and glyphs the script composes into the cards (counts, labels, stars). -->
+      <template id="plist-strings">
+        <span data-string="count.one">{{providers.count.one}}</span>
+        <span data-string="count.two">{{providers.count.two}}</span>
+        <span data-string="count.other">{{providers.count.other}}</span>
+        <span data-string="filters.open">{{providers.filters.open}}</span>
+        <span data-string="filters.openWithCount">{{providers.filters.openWithCount}}</span>
+        <span data-string="card.priceLevel">{{providers.card.priceLevel}}</span>
+        <span data-string="card.rating">{{providers.card.rating}}</span>
+        <span data-string="card.ratingEmpty">{{providers.card.ratingEmpty}}</span>
+        <span data-string="card.completed.one">{{providers.card.completed.one}}</span>
+        <span data-string="card.completed.two">{{providers.card.completed.two}}</span>
+        <span data-string="card.completed.other">{{providers.card.completed.other}}</span>
+        <span data-string="card.unnamed">{{providers.card.unnamed}}</span>
+{{#each providers.areaList}}        <span data-string="area.{{this.key}}">{{this.label}}</span>
+{{/each}}{{#each providers.filters.providerTypes}}        <span data-string="type.{{this.key}}">{{this.label}}</span>
+{{/each}}        <span data-icon="star">{{icon:star-filled}}</span>
+        <span data-icon="star-half">{{icon:star-half}}</span>
+        <span data-icon="star-outline">{{icon:star-outline}}</span>
+      </template>
+
+      <script src="/assets/js/providers.js" defer></script>

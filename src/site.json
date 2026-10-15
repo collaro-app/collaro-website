@@ -1,9 +1,10 @@
 {
-  "_comment": "Site-wide configuration. Leave appStoreUrl / playStoreUrl empty until the listings are live — the buttons then render as 'coming soon' (no dead links).",
+  "_comment": "Site-wide configuration. Leave appStoreUrl / playStoreUrl empty until the listings are live — the buttons then render as 'coming soon' (no dead links). apiUrl is the PRODUCTION API the provider list (/providers/) reads in the visitor's browser; the API must grant this site's origin (its PUBLIC_WEB_ORIGINS).",
   "name": "Collaro",
   "url": "https://collaro.app",
   "defaultLang": "en",
   "contactEmail": "contact@collaro.app",
+  "apiUrl": "https://collaro.onrender.com",
   "appStoreUrl": "",
   "playStoreUrl": ""
 }

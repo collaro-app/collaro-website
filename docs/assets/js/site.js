@@ -1,6 +1,7 @@
 /*
- * Collaro website — the only JavaScript on the site. Everything here is
- * progressive enhancement: the pages read and navigate fine without it.
+ * Collaro website — the JavaScript every page loads. Everything here is
+ * progressive enhancement: the pages read and navigate fine without it. (The
+ * provider list's own script is providers.js, loaded by that page only.)
  *
  *  1. Mobile navigation toggle (accessible disclosure: aria-expanded, Escape closes).
  *  2. Header bottom border once the page is scrolled.

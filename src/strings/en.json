@@ -9,6 +9,7 @@
     "nav": {
       "owners": "For owners",
       "providers": "For providers",
+      "findProvider": "Find a provider",
       "howItWorks": "How it works",
       "support": "Support",
       "getApp": "Get the app"
@@ -203,9 +204,139 @@
       "description": "Open it in the Collaro app to see their services and reviews and book dog services."
     },
     "title": "Open this profile in the Collaro app",
-    "lead": "Someone shared a dog-services provider's profile with you. Collaro is a mobile app: open this link on your phone with Collaro installed and it goes straight to the profile.",
+    "lead": "This dog-care provider's profile, with their services, prices and reviews, is in the Collaro app. Collaro is a mobile app: open this link on your phone with Collaro installed and it goes straight to the profile.",
     "openCta": "Open in the app",
+    "seeAll": "See all providers",
     "getAppTitle": "Don't have Collaro yet?",
     "getAppText": "Download it for free and sign in, then tap the link again. It will open the profile right away."
+  },
+  "providers": {
+    "meta": {
+      "title": "Find a dog-care provider",
+      "description": "Browse Collaro's dog sitters, walkers, groomers and trainers across Israel. Filter by area, service and rating, then book in the Collaro app."
+    },
+    "title": "Care your dog will love",
+    "subtitle": "Find trusted dog sitters, walkers, groomers and trainers in your area",
+    "areasLabel": "Filter by area",
+    "allAreas": "All areas",
+    "areaList": [
+      {
+        "key": "north",
+        "label": "North & Valleys"
+      },
+      {
+        "key": "haifa_krayot",
+        "label": "Haifa & Krayot"
+      },
+      {
+        "key": "sharon",
+        "label": "Sharon"
+      },
+      {
+        "key": "gush_dan",
+        "label": "Tel Aviv & Gush Dan"
+      },
+      {
+        "key": "center",
+        "label": "Center"
+      },
+      {
+        "key": "shfela",
+        "label": "Shfela"
+      },
+      {
+        "key": "jerusalem",
+        "label": "Jerusalem & Surroundings"
+      },
+      {
+        "key": "judea_samaria",
+        "label": "Judea & Samaria"
+      },
+      {
+        "key": "south",
+        "label": "South & Negev"
+      },
+      {
+        "key": "eilat_arava",
+        "label": "Eilat & Arava"
+      }
+    ],
+    "count": {
+      "one": "{count} provider",
+      "two": "{count} providers",
+      "other": "{count} providers"
+    },
+    "filters": {
+      "open": "Filters",
+      "openWithCount": "Filters, {count} active",
+      "title": "Filters",
+      "close": "Close filters",
+      "area": "Area",
+      "serviceType": "Service type",
+      "providerType": "Provider type",
+      "minRating": "Minimum rating",
+      "minCompletedBookings": "Completed bookings",
+      "verifiedOnly": "Verified only",
+      "verifiedOnlyHint": "Show only providers with the Verified badge",
+      "any": "Any",
+      "clearAll": "Clear filters",
+      "apply": "Show results",
+      "serviceTypes": [
+        {
+          "key": "boarding",
+          "label": "Boarding"
+        },
+        {
+          "key": "home_sitting",
+          "label": "Home Sitting"
+        },
+        {
+          "key": "dog_walking",
+          "label": "Dog Walking"
+        },
+        {
+          "key": "grooming",
+          "label": "Grooming"
+        },
+        {
+          "key": "training",
+          "label": "Training"
+        }
+      ],
+      "providerTypes": [
+        {
+          "key": "business",
+          "label": "Business"
+        },
+        {
+          "key": "private",
+          "label": "Private"
+        }
+      ]
+    },
+    "card": {
+      "verified": "Verified",
+      "priceLevel": "Price level {level}",
+      "rating": "Rating: {value} out of {max}, {count} reviews",
+      "ratingEmpty": "Not yet rated",
+      "completed": {
+        "one": "{count} completed booking",
+        "two": "{count} completed bookings",
+        "other": "{count} completed bookings"
+      },
+      "unnamed": "View profile",
+      "previousPhoto": "Previous photo",
+      "nextPhoto": "Next photo"
+    },
+    "loading": "Loading…",
+    "error": "Couldn't load providers.",
+    "retry": "Retry",
+    "emptyTitle": "No providers yet",
+    "emptySubtitle": "New providers join all the time — check back soon.",
+    "emptyFilteredTitle": "No providers match your filters",
+    "emptyFilteredSubtitle": "Try another area or fewer filters.",
+    "noscript": "Turn on JavaScript to browse the providers here, or get the Collaro app to find them there.",
+    "getAppTitle": "Found someone your dog will love?",
+    "getAppText": "Book them in the Collaro app. It's free: see their services, prices and reviews, and chat with them before you book."
   }
 }

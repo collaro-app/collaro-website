@@ -184,6 +184,11 @@ main:focus {
   border: 0;
 }
 
+/* The attribute always wins over a component's own display (a hidden flex row stays hidden). */
+[hidden] {
+  display: none !important;
+}
+
 .skip-link {
   position: absolute;
   inset-inline-start: var(--sp-4);
@@ -499,6 +504,7 @@ a.store-btn:hover {
   color: var(--text-2);
   font-weight: 500;
   text-decoration: none;
+  white-space: nowrap;
   transition:
     background-color 0.15s ease,
     color 0.15s ease;
@@ -564,7 +570,8 @@ a.store-btn:hover {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-@media (max-width: 899px) {
+/* The full nav needs ~1020px on one line (the Hebrew labels are the longest); below that it collapses. */
+@media (max-width: 1079px) {
   .nav-toggle {
     display: flex;
   }
@@ -1418,6 +1425,1074 @@ a.store-btn:hover {
 
 .document section {
   scroll-margin-top: calc(var(--header-h) + var(--sp-4));
+}
+
+/* --------------------------------------------------------------------------
+   Provider list (/providers/) — the web twin of the app's public guest list
+   (pages/shared/components/ProviderListBrowser): the soft brand tint, a faint
+   dog scatter around the heading, area chips, a count + filter toolbar, photo
+   cards and soft bubbles resting along the bottom. Sizes follow the app's
+   (190px photo band, 44px avatar, 13px meta glyphs).
+   -------------------------------------------------------------------------- */
+
+.plist {
+  position: relative;
+  overflow: hidden;
+  background: var(--primary-soft);
+  padding-block: var(--sp-4) var(--sp-16);
+}
+
+/* Above the bubbles, which sit behind the cards. */
+.plist__inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Bubbles (app: BackgroundBubbles) — white orbs and faint brand-blue ones, drifting up and back. */
+
+.plist__bubbles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.plist__bubble {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+}
+
+.plist__bubble--1,
+.plist__bubble--3,
+.plist__bubble--4 {
+  background: #ffffff;
+  opacity: 0.6;
+}
+
+.plist__bubble--2,
+.plist__bubble--5 {
+  background: var(--primary);
+  opacity: 0.07;
+}
+
+.plist__bubble--1 {
+  --size: 220px;
+  --drift: 10px;
+  --drift-time: 5.2s;
+  bottom: -80px;
+  inset-inline-end: -70px;
+}
+
+.plist__bubble--2 {
+  --size: 140px;
+  --drift: 8px;
+  --drift-time: 4.6s;
+  bottom: 70px;
+  inset-inline-start: -56px;
+}
+
+.plist__bubble--3 {
+  --size: 72px;
+  --drift: 12px;
+  --drift-time: 3.9s;
+  bottom: 210px;
+  inset-inline-end: 28px;
+}
+
+.plist__bubble--4 {
+  --size: 40px;
+  --drift: 9px;
+  --drift-time: 3.4s;
+  bottom: 150px;
+  inset-inline-start: 22%;
+}
+
+.plist__bubble--5 {
+  --size: 104px;
+  --drift: 7px;
+  --drift-time: 4.3s;
+  bottom: 12px;
+  inset-inline-start: 38%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .plist__bubble {
+    animation: plist-drift var(--drift-time) ease-in-out infinite alternate;
+  }
+}
+
+@keyframes plist-drift {
+  to {
+    transform: translateY(calc(-1 * var(--drift)));
+  }
+}
+
+/* Intro (app: ProviderListHeader + DogPatternBackdrop) */
+
+.plist__intro {
+  position: relative;
+  padding-block: var(--sp-8) var(--sp-6);
+}
+
+/* The scatter keeps to the strips above the heading and below the intro line — never under a letter. */
+.plist__marks {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: calc(-1 * var(--gutter));
+  overflow: hidden;
+  pointer-events: none;
+  color: var(--primary);
+}
+
+.plist__mark {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  opacity: 0.16;
+  transform: rotate(var(--rotate));
+}
+
+.plist__mark svg {
+  width: 100%;
+  height: 100%;
+}
+
+.plist__mark--1 {
+  --size: 14px;
+  --rotate: 0deg;
+  top: 6px;
+  inset-inline-start: 7%;
+}
+
+.plist__mark--2 {
+  --size: 13px;
+  --rotate: -10deg;
+  top: 15px;
+  inset-inline-start: 36%;
+}
+
+.plist__mark--3 {
+  --size: 20px;
+  --rotate: -25deg;
+  top: 9px;
+  inset-inline-end: 27%;
+}
+
+.plist__mark--4 {
+  --size: 18px;
+  --rotate: 20deg;
+  top: 4px;
+  inset-inline-end: 7%;
+}
+
+.plist__mark--5 {
+  --size: 13px;
+  --rotate: 18deg;
+  bottom: 8px;
+  inset-inline-start: 22%;
+}
+
+.plist__mark--6 {
+  --size: 16px;
+  --rotate: 40deg;
+  bottom: 3px;
+  inset-inline-end: 48%;
+}
+
+.plist__mark--7 {
+  --size: 15px;
+  --rotate: -15deg;
+  bottom: 6px;
+  inset-inline-end: 12%;
+}
+
+/* The dog sits in the flow at the heading's end, so a long heading wraps before it. */
+.plist__title-row {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--sp-2);
+}
+
+.plist__title {
+  font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* The glyph faces right: flipped in LTR so it looks back at the heading, as drawn in RTL. */
+.plist__dog {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  color: var(--primary);
+  opacity: 0.24;
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .plist__dog {
+  transform: none;
+}
+
+.plist__dog svg {
+  width: 100%;
+  height: 100%;
+}
+
+.plist__subtitle {
+  margin-top: var(--sp-1);
+  max-width: 60ch;
+  color: var(--text-2);
+  font-size: 1.0625rem;
+}
+
+/* The controls need the script; without it the page offers the app instead. */
+html:not(.js) .plist__controls {
+  display: none;
+}
+
+.plist__noscript {
+  margin-top: var(--sp-2);
+  padding: var(--sp-4) var(--sp-5);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--primary-muted);
+  color: var(--text-2);
+}
+
+/* Chips (app: Chip) */
+
+.chip {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: var(--sp-1);
+  min-height: 36px;
+  padding: var(--sp-2) var(--sp-4);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  color: var(--text-2);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.chip:hover {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: var(--on-primary);
+}
+
+.chip:active {
+  opacity: 0.85;
+}
+
+.chip__icon {
+  width: 14px;
+  height: 14px;
+}
+
+.chip[aria-pressed="true"] .chip__icon--off,
+.chip[aria-pressed="false"] .chip__icon--on {
+  display: none;
+}
+
+/* Area quick-select: one scrolling row bleeding to the screen edges; wraps on wide screens. */
+.chip-row {
+  display: flex;
+  gap: var(--sp-2);
+  margin-inline: calc(-1 * var(--gutter));
+  padding: var(--sp-1) var(--gutter) var(--sp-2);
+  overflow-x: auto;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: none;
+}
+
+.chip-row::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .chip-row {
+    flex-wrap: wrap;
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow: visible;
+  }
+}
+
+.chip-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+/* Toolbar: result count + filter button (app: FilterButton) */
+
+.plist__toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  min-height: 44px;
+  margin-bottom: var(--sp-3);
+}
+
+.plist__count {
+  flex: 1;
+  color: var(--text-2);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.filter-btn {
+  position: relative;
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-md);
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.filter-btn:hover {
+  background: rgba(47, 111, 237, 0.08);
+}
+
+.filter-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.filter-btn__badge {
+  position: absolute;
+  top: 5px;
+  inset-inline-end: 4px;
+  min-width: 16px;
+  height: 16px;
+  padding-inline: 3px;
+  border-radius: var(--r-pill);
+  background: var(--primary);
+  color: var(--on-primary);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+}
+
+/* The grid of cards */
+
+.plist__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  transition: opacity 0.2s ease;
+}
+
+/* The previous answer stands in while the new filters load. */
+.plist__grid.is-stale {
+  opacity: 0.55;
+}
+
+@media (min-width: 640px) {
+  .plist__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-5);
+  }
+}
+
+@media (min-width: 1000px) {
+  .plist__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Card (app: ProviderPhotoCard). The name link stretches over the whole card;
+   the photos sit above it as their own (unfocusable) links so a swipe can page them. */
+
+.pcard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.pcard:hover {
+  box-shadow: var(--shadow-md);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pcard:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@supports selector(:has(*)) {
+  .pcard:has(.pcard__link:focus-visible) {
+    outline: 3px solid var(--primary);
+    outline-offset: 3px;
+  }
+
+  .pcard__link:focus-visible {
+    outline: none;
+  }
+}
+
+.pcard__photo {
+  position: relative;
+  height: 190px;
+  background: var(--surface-sunken);
+}
+
+/* No photos: the brand paw trail on a neutral fill (not the page's tint, which it would melt into). */
+.pcard__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface-alt);
+}
+
+.pcard__placeholder img {
+  width: 30px;
+  height: 30px;
+  margin-inline: 6.75px;
+  opacity: 0.18;
+  transform: translateY(-8px) rotate(18deg);
+}
+
+.pcard__placeholder img:nth-child(even) {
+  transform: translateY(8px) rotate(-18deg);
+}
+
+.pcard__track {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.pcard__track::-webkit-scrollbar {
+  display: none;
+}
+
+.pcard__slide {
+  display: block;
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.pcard__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pcard__dots {
+  position: absolute;
+  inset-inline: 0;
+  bottom: var(--sp-2);
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-1);
+  pointer-events: none;
+}
+
+.pcard__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--r-pill);
+  background: var(--border);
+}
+
+.pcard__dot.is-active {
+  background: var(--primary);
+}
+
+/* Previous/next photo: a mouse affordance only (touch swipes, keyboard users open the profile). */
+.pcard__nav {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-top: -16px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.pcard__nav svg {
+  width: 16px;
+  height: 16px;
+}
+
+.pcard__nav--prev {
+  inset-inline-start: var(--sp-2);
+}
+
+.pcard__nav--next {
+  inset-inline-end: var(--sp-2);
+}
+
+/* The chevron points forward (right); mirror it for "previous", and both again in RTL. */
+.pcard__nav--prev svg,
+[dir="rtl"] .pcard__nav--next svg {
+  transform: scaleX(-1);
+}
+
+[dir="rtl"] .pcard__nav--prev svg {
+  transform: none;
+}
+
+.pcard__nav:disabled {
+  visibility: hidden;
+}
+
+@media (hover: hover) {
+  .pcard__nav {
+    display: inline-flex;
+  }
+
+  .pcard:hover .pcard__nav {
+    opacity: 1;
+  }
+}
+
+/* Price level on the photo's top-end corner (app: PrestigeBadge on a surface pill). */
+.pcard__price {
+  position: absolute;
+  top: var(--sp-2);
+  inset-inline-end: var(--sp-2);
+  z-index: 3;
+  padding: 2px var(--sp-2);
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  pointer-events: none;
+}
+
+.pcard__price-glyphs {
+  display: flex;
+  gap: 1px;
+  color: var(--primary-muted);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.pcard__price-glyphs .is-active {
+  color: var(--primary);
+}
+
+.pcard__body {
+  padding: var(--sp-3) var(--sp-4) var(--sp-4);
+}
+
+/* The identity row: the avatar BESIDE the name, then the type + verified pills. */
+.pcard__identity {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.pcard__avatar {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--primary-soft);
+  color: var(--on-soft);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.pcard__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: var(--surface-sunken);
+}
+
+.pcard__identity-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.pcard__name {
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.pcard__link {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.pcard__link:hover {
+  color: var(--text);
+}
+
+.pcard__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.pcard__pills {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-top: var(--sp-1);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: 4px var(--sp-2);
+  border-radius: var(--r-pill);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.badge img {
+  width: 14px;
+  height: 14px;
+}
+
+.badge--type {
+  background: var(--surface-alt);
+  color: var(--text-2);
+}
+
+.badge--verified {
+  padding-block: 3px;
+  background: var(--primary-soft);
+  color: var(--on-soft);
+  font-weight: 700;
+}
+
+.badge--verified svg {
+  width: 13px;
+  height: 13px;
+  color: var(--primary);
+}
+
+/* ONE wrapping meta line: rating (count) · area · completed bookings — separate glyph-led items. */
+.pcard__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-1) var(--sp-4);
+  margin-top: var(--sp-3);
+  color: var(--text-2);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+}
+
+.pcard__rating,
+.pcard__meta-item {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.pcard__stars {
+  display: inline-flex;
+  gap: 2px;
+  color: var(--star);
+}
+
+.pcard__stars svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* A half star's filled half faces the full stars, which come first in reading order. */
+[dir="rtl"] .pcard__stars .is-half svg {
+  transform: scaleX(-1);
+}
+
+.pcard__rating-value {
+  margin-inline-start: var(--sp-1);
+}
+
+.pcard__meta-item {
+  gap: var(--sp-1);
+}
+
+.pcard__meta-item svg {
+  flex: none;
+  width: 13px;
+  height: 13px;
+  color: var(--text-3);
+}
+
+.pcard__meta-item--done svg {
+  color: var(--success);
+}
+
+/* Loading / error / empty, in place of the cards (app: Loading, ErrorState, EmptyState) */
+
+.plist__status:empty {
+  display: none;
+}
+
+.plist-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-10) var(--sp-6);
+  text-align: center;
+}
+
+.plist-state[data-state="updating"] {
+  padding: 0 0 var(--sp-4);
+}
+
+.plist-state .btn {
+  margin-top: var(--sp-2);
+}
+
+/* The soft-tint button would melt into the tinted page. */
+.plist-state .btn--secondary {
+  background: var(--surface);
+}
+
+/* White, not the app's soft tint: the page itself is that tint here. */
+.plist-state__badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--primary);
+}
+
+.plist-state__badge svg {
+  width: 34px;
+  height: 34px;
+}
+
+.plist-state__icon--muted {
+  color: var(--text-3);
+}
+
+.plist-state__icon--muted svg {
+  width: 40px;
+  height: 40px;
+}
+
+.plist-state__title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.plist-state__caption,
+.plist-state__text {
+  max-width: 34ch;
+  color: var(--text-2);
+  font-size: 0.9375rem;
+}
+
+.plist-state__title + .plist-state__caption {
+  margin-top: calc(-1 * var(--sp-2));
+}
+
+.spinner {
+  display: block;
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--primary-muted);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spinner-turn 0.8s linear infinite;
+}
+
+.spinner--sm {
+  width: 22px;
+  height: 22px;
+  border-width: 2.5px;
+}
+
+/* Still turning (it is the only sign of progress), just slowly. */
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 2.4s;
+  }
+}
+
+@keyframes spinner-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Filter sheet (app: ProviderFilterSheet) — a bottom sheet on phones, a centred dialog on wider screens. */
+
+html:has(.filter-sheet[open]) {
+  overflow: hidden;
+}
+
+.filter-sheet {
+  width: 100%;
+  max-width: 560px;
+  max-height: none;
+  margin: auto auto 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--r-xl) var(--r-xl) 0 0;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-lg);
+}
+
+.filter-sheet::backdrop {
+  background: rgba(20, 25, 37, 0.45);
+}
+
+@media (min-width: 720px) {
+  .filter-sheet {
+    margin: auto;
+    border-radius: var(--r-xl);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .filter-sheet[open] {
+    animation: sheet-in 0.22s ease-out;
+  }
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+
+.filter-sheet__panel {
+  display: flex;
+  flex-direction: column;
+  max-height: min(88vh, 760px);
+  max-height: min(88dvh, 760px);
+}
+
+.filter-sheet__header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-5);
+  border-bottom: 1px solid var(--border);
+}
+
+.filter-sheet__title {
+  flex: 1;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.filter-sheet__clear {
+  padding: var(--sp-2);
+  border: 0;
+  border-radius: var(--r-sm);
+  background: none;
+  color: var(--link);
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter-sheet__close {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--surface-alt);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.filter-sheet__close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.filter-sheet__body {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: var(--sp-1) var(--sp-5) var(--sp-5);
+}
+
+.filter-sheet__section {
+  margin: var(--sp-5) 0 var(--sp-2);
+  color: var(--text-2);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.filter-sheet__toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  margin-top: var(--sp-6);
+}
+
+.filter-sheet__toggle-text {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.filter-sheet__toggle-label {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.filter-sheet__toggle-hint {
+  color: var(--text-2);
+  font-size: 0.8125rem;
+}
+
+.filter-sheet__footer {
+  padding: var(--sp-4) var(--sp-5);
+  padding-bottom: calc(var(--sp-4) + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--border);
+}
+
+.filter-sheet__apply {
+  width: 100%;
+}
+
+/* Switch (app: Toggle): a real checkbox (role="switch") over a drawn track. */
+.switch {
+  position: relative;
+  flex: none;
+  width: 51px;
+  height: 31px;
+}
+
+.switch__input {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.switch__track {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--r-pill);
+  background: var(--border-strong);
+  transition: background-color 0.2s ease;
+}
+
+.switch__track::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  inset-inline-start: 2px;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(11, 18, 32, 0.25);
+  transition: transform 0.2s ease;
+}
+
+.switch__input:checked + .switch__track {
+  background: var(--primary);
+}
+
+.switch__input:checked + .switch__track::before {
+  transform: translateX(20px);
+}
+
+[dir="rtl"] .switch__input:checked + .switch__track::before {
+  transform: translateX(-20px);
+}
+
+.switch__input:focus-visible + .switch__track {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+@media (forced-colors: active) {
+  .switch__input {
+    opacity: 1;
+  }
+
+  .switch__track {
+    display: none;
+  }
 }
 
 /* --------------------------------------------------------------------------
